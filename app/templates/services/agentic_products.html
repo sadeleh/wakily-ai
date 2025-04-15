@@ -1,0 +1,409 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+    .hero-service {
+        background: linear-gradient(135deg, rgba(94, 53, 177, 0.1) 0%, rgba(33, 150, 243, 0.1) 100%);
+        padding: 6rem 0 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .product-section {
+        padding: 5rem 0;
+    }
+    
+    .product-intro {
+        margin-bottom: 3rem;
+    }
+    
+    .product-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .product-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .product-header {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        color: var(--white);
+        padding: 2rem;
+        text-align: center;
+    }
+    
+    .product-header h3 {
+        margin-bottom: 0.5rem;
+        color: var(--white);
+    }
+    
+    .product-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .product-body {
+        padding: 2rem;
+        flex-grow: 1;
+    }
+    
+    .product-features {
+        margin: 1.5rem 0;
+        text-align: right;
+    }
+    
+    .product-features li {
+        margin-bottom: 0.8rem;
+        position: relative;
+        padding-right: 1.5rem;
+    }
+    
+    .product-features li::before {
+        content: "✓";
+        color: var(--primary);
+        position: absolute;
+        right: 0;
+    }
+    
+    .product-footer {
+        padding: 1.5rem 2rem;
+        text-align: center;
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .featured-product {
+        padding: 5rem 0;
+        background-color: var(--light-bg);
+    }
+    
+    .featured-container {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+    
+    .featured-image {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .featured-image img {
+        max-width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+    }
+    
+    .featured-content {
+        flex: 1;
+    }
+    
+    .featured-container.reversed {
+        flex-direction: row-reverse;
+    }
+    
+    .customization-section {
+        padding: 5rem 0;
+    }
+    
+    .customization-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .customization-card {
+        padding: 2rem;
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+    }
+    
+    .customization-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .customization-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+    }
+    
+    .testimonials {
+        padding: 5rem 0;
+        background-color: var(--light-bg);
+    }
+    
+    .testimonial-slider {
+        margin-top: 3rem;
+    }
+    
+    .testimonial-item {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .testimonial-text {
+        font-style: italic;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-author {
+        font-weight: bold;
+        color: var(--primary);
+    }
+    
+    .company {
+        color: var(--text-light);
+        font-size: 0.9rem;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .featured-container {
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .featured-container.reversed {
+            flex-direction: column;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-service">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>منتجات وكلاء الذكاء الاصطناعي</h2>
+            <p>حلول جاهزة وقابلة للتخصيص لتلبية احتياجات عملك</p>
+        </div>
+    </div>
+</section>
+
+<!-- Product Overview -->
+<section class="product-section">
+    <div class="container">
+        <div class="product-intro animate__animated">
+            <h2>وكلاء أذكياء جاهزون للعمل</h2>
+            <p>نقدم مجموعة من منتجات وكلاء الذكاء الاصطناعي الجاهزة للاستخدام والمصممة خصيصًا لتلبية احتياجات الأعمال المختلفة. تتميز وكلاؤنا بفهم عميق للغة العربية ولهجاتها، مع القدرة على التخصيص لتناسب متطلباتك الفريدة.</p>
+        </div>
+        
+        <div class="product-cards">
+            <div class="product-card animate__animated">
+                <div class="product-header">
+                    <div class="product-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>وكيل خدمة العملاء</h3>
+                    <p>خدمة عملاء آلية متطورة على مدار الساعة</p>
+                </div>
+                <div class="product-body">
+                    <p>وكيل ذكي متخصص في خدمة العملاء، قادر على فهم استفسارات العملاء والرد عليها بدقة وفعالية. يمكنه التعامل مع الاستفسارات المتكررة، وإدارة الشكاوى، وتوجيه العملاء إلى الموارد المناسبة.</p>
+                    <ul class="product-features">
+                        <li>فهم متقدم للاستفسارات باللغة العربية ولهجاتها</li>
+                        <li>دعم متعدد القنوات (موقع الويب، تطبيق، واتساب)</li>
+                        <li>قاعدة معرفية قابلة للتخصيص</li>
+                        <li>تصعيد ذكي للمشكلات المعقدة إلى الموظفين</li>
+                        <li>تقارير وتحليلات مفصلة</li>
+                    </ul>
+                </div>
+                <div class="product-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">طلب عرض توضيحي</a>
+                </div>
+            </div>
+            
+            <div class="product-card animate__animated">
+                <div class="product-header">
+                    <div class="product-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>وكيل معالجة المستندات</h3>
+                    <p>تحليل واستخراج البيانات من المستندات العربية</p>
+                </div>
+                <div class="product-body">
+                    <p>وكيل متخصص في معالجة المستندات باللغة العربية، يمكنه قراءة وتحليل واستخراج المعلومات المهمة من مختلف أنواع المستندات، مثل العقود والفواتير والتقارير.</p>
+                    <ul class="product-features">
+                        <li>دعم مختلف تنسيقات المستندات (PDF، Word، صور)</li>
+                        <li>استخراج البيانات المهيكلة وغير المهيكلة</li>
+                        <li>تلخيص المستندات الطويلة</li>
+                        <li>تصنيف المستندات وفهرستها</li>
+                        <li>تكامل مع أنظمة إدارة المستندات الحالية</li>
+                    </ul>
+                </div>
+                <div class="product-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">طلب عرض توضيحي</a>
+                </div>
+            </div>
+            
+            <div class="product-card animate__animated">
+                <div class="product-header">
+                    <div class="product-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>وكيل الامتثال</h3>
+                    <p>مراقبة وضمان الامتثال للأنظمة واللوائح</p>
+                </div>
+                <div class="product-body">
+                    <p>وكيل متخصص في مراقبة الامتثال للأنظمة واللوائح، يمكنه تحليل البيانات والمستندات للتأكد من مطابقتها للمتطلبات التنظيمية والقانونية، وتحديد المخاطر المحتملة.</p>
+                    <ul class="product-features">
+                        <li>مراقبة الامتثال للوائح المحلية والدولية</li>
+                        <li>فحص المستندات للتأكد من الامتثال</li>
+                        <li>تنبيهات آلية للمخالفات المحتملة</li>
+                        <li>تقارير امتثال دورية</li>
+                        <li>تحديثات مستمرة لقاعدة بيانات اللوائح</li>
+                    </ul>
+                </div>
+                <div class="product-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">طلب عرض توضيحي</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Product -->
+<section class="featured-product">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>الوكيل المميز: مساعد المبيعات الذكي</h2>
+            <p>تعزيز فريق المبيعات لديك بقوة الذكاء الاصطناعي</p>
+        </div>
+        
+        <div class="featured-container animate__animated">
+            <div class="featured-image">
+                <img src="{{ url_for('static', filename='images/sales-assistant.svg') }}" alt="مساعد المبيعات الذكي">
+            </div>
+            <div class="featured-content">
+                <h3>مساعد المبيعات الذكي</h3>
+                <p>وكيل متطور مصمم لدعم فريق المبيعات، يساعد في تحديد وتأهيل العملاء المحتملين، وإدارة العلاقات مع العملاء، وتبسيط عملية البيع من البداية إلى النهاية.</p>
+                <ul class="product-features">
+                    <li>تحديد وتصنيف العملاء المحتملين</li>
+                    <li>المتابعة التلقائية مع العملاء المحتملين</li>
+                    <li>تقديم معلومات منتجات مخصصة للعملاء</li>
+                    <li>تنظيم وجدولة الاجتماعات</li>
+                    <li>تذكير المبيعات بالمتابعة</li>
+                    <li>تحليل بيانات العملاء واقتراح فرص البيع التقاطعي والإضافي</li>
+                    <li>تكامل مع CRM وأنظمة المبيعات الأخرى</li>
+                </ul>
+                <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Customization Options -->
+<section class="customization-section">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>خيارات التخصيص</h2>
+            <p>حلول مرنة قابلة للتخصيص لتلبية احتياجاتك الفريدة</p>
+        </div>
+        
+        <div class="customization-cards">
+            <div class="customization-card animate__animated">
+                <div class="customization-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <h3>تخصيص اللغة</h3>
+                <p>تخصيص الوكيل للتعامل مع لهجات عربية محددة أو مصطلحات خاصة بقطاعك، أو تحسين قدراته في مجالات لغوية معينة.</p>
+            </div>
+            
+            <div class="customization-card animate__animated">
+                <div class="customization-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>تخصيص الوظائف</h3>
+                <p>إضافة أو تعديل وظائف الوكيل لتناسب احتياجات عملك الخاصة، مثل إضافة قدرات تحليلية أو وظائف إدارية محددة.</p>
+            </div>
+            
+            <div class="customization-card animate__animated">
+                <div class="customization-icon">
+                    <i class="fas fa-plug"></i>
+                </div>
+                <h3>تكامل الأنظمة</h3>
+                <p>تخصيص الوكيل للتكامل مع أنظمتك الحالية، مثل CRM وERP وأنظمة إدارة المحتوى وغيرها من الأدوات.</p>
+            </div>
+            
+            <div class="customization-card animate__animated">
+                <div class="customization-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>تخصيص التحليلات</h3>
+                <p>تخصيص التقارير والتحليلات التي يقدمها الوكيل لتوفير رؤى أعمق حول جوانب محددة من عملك.</p>
+            </div>
+            
+            <div class="customization-card animate__animated">
+                <div class="customization-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>تخصيص الواجهة</h3>
+                <p>تخصيص واجهة المستخدم وتجربة التفاعل مع الوكيل لتعكس هوية علامتك التجارية وتوفر تجربة مستخدم سلسة.</p>
+            </div>
+            
+            <div class="customization-card animate__animated">
+                <div class="customization-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3>تخصيص سير العمل</h3>
+                <p>تخصيص تدفقات العمل والعمليات التي يديرها الوكيل لتتماشى مع إجراءات عملك الداخلية.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>ماذا يقول عملاؤنا</h2>
+            <p>تجارب حقيقية مع منتجات وكلاء الذكاء الاصطناعي</p>
+        </div>
+        
+        <div class="testimonial-slider">
+            <div class="testimonial-item animate__animated">
+                <div class="testimonial-text">
+                    "وكيل خدمة العملاء الذي قدمته وكيلي غيّر طريقة تفاعلنا مع عملائنا. لقد تمكن من التعامل مع 80% من استفسارات العملاء تلقائيًا، مما مكّن فريقنا من التركيز على المهام ذات القيمة المضافة الأعلى. الأهم من ذلك، قدرته على فهم اللهجة السعودية كانت استثنائية."
+                </div>
+                <div class="testimonial-author">أحمد السالم</div>
+                <div class="company">مدير خدمة العملاء، شركة الاتصالات المتكاملة</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta">
+    <div class="container">
+        <h2 class="animate__animated">جاهز لتجربة قوة وكلاء الذكاء الاصطناعي في عملك؟</h2>
+        <p class="animate__animated">تواصل معنا اليوم لطلب عرض توضيحي مجاني وتجربة كيف يمكن لوكلائنا الأذكياء تحويل عملك.</p>
+        <a href="{{ url_for('contact.contact') }}" class="btn animate__animated">تواصل معنا</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<!-- Removed custom FontAwesome script since it's now in base.html -->
+{% endblock %} 

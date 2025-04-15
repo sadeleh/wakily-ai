@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="about-section">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>من نحن</h2>
+            <p>رواد الذكاء الاصطناعي العربي للتكامل السلس والحلول الذكية</p>
+        </div>
+        
+        <div class="about-container">
+            <div class="about-image animate__animated">
+                <img src="{{ url_for('static', filename='images/about-image.svg') }}" alt="About Wakily.sa">
+            </div>
+            
+            <div class="about-content animate__animated">
+                <h2>مهمتنا</h2>
+                <p>نسعى في وكيلي لتمكين الشركات والمؤسسات في العالم العربي من خلال حلول ذكاء اصطناعي متقدمة تفهم اللغة العربية بجميع لهجاتها وخصوصياتها الثقافية.</p>
+                
+                <h2>رؤيتنا</h2>
+                <p>أن نكون الشركة الرائدة في مجال الذكاء الاصطناعي المتخصص باللغة العربية، ونساهم في تسريع التحول الرقمي وتعزيز الابتكار في المنطقة.</p>
+                
+                <h2>قيمنا</h2>
+                <ul>
+                    <li><strong>الابتكار:</strong> نسعى دائمًا لتطوير حلول جديدة ومبتكرة تلبي احتياجات السوق المتغيرة.</li>
+                    <li><strong>التميز:</strong> نلتزم بتقديم أعلى مستويات الجودة والدقة في جميع منتجاتنا وخدماتنا.</li>
+                    <li><strong>الشفافية:</strong> نؤمن بأهمية الشفافية في تعاملاتنا مع عملائنا وشركائنا.</li>
+                    <li><strong>التعاون:</strong> نعمل بروح الفريق ونتعاون مع عملائنا لتحقيق أهدافهم.</li>
+                    <li><strong>الأمان:</strong> نضع أمان البيانات وخصوصيتها في مقدمة أولوياتنا.</li>
+                </ul>
+                
+                <h2>التزامنا</h2>
+                <p>نلتزم بتقديم حلول ذكاء اصطناعي متوافقة مع اللوائح والأنظمة الوطنية، مع التركيز على الأمان والخصوصية وأخلاقيات الذكاء الاصطناعي.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta">
+    <div class="container">
+        <h2 class="animate__animated">هل أنت مستعد للانضمام إلى رحلة الابتكار معنا؟</h2>
+        <p class="animate__animated">اكتشف كيف يمكن لحلول وكيلي أن تساعد مؤسستك على تحقيق أهدافها.</p>
+        <a href="{{ url_for('contact.contact') }}" class="btn animate__animated">تواصل معنا اليوم</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %} 

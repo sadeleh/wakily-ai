@@ -1,0 +1,474 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+    .hero-service {
+        background: linear-gradient(135deg, rgba(94, 53, 177, 0.1) 0%, rgba(33, 150, 243, 0.1) 100%);
+        padding: 6rem 0 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .service-feature {
+        margin-bottom: 5rem;
+    }
+    
+    .service-feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .feature-item {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .feature-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(94, 53, 177, 0.1) 0%, rgba(33, 150, 243, 0.1) 100%);
+        border-radius: 50%;
+    }
+    
+    .feature-icon i {
+        font-size: 1.8rem;
+        color: var(--primary);
+    }
+    
+    .service-showcase {
+        padding: 5rem 0;
+        background-color: var(--light-bg);
+    }
+    
+    .showcase-item {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        margin-bottom: 5rem;
+    }
+    
+    .showcase-content {
+        flex: 1;
+    }
+    
+    .showcase-image {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .showcase-image img {
+        max-width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+    }
+    
+    .reversed {
+        flex-direction: row-reverse;
+    }
+    
+    .faq-section {
+        padding: 5rem 0;
+    }
+    
+    .faq-item {
+        margin-bottom: 1.5rem;
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        overflow: hidden;
+    }
+    
+    .faq-question {
+        padding: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        color: var(--primary);
+    }
+    
+    .faq-answer {
+        padding: 0 1.5rem 1.5rem;
+    }
+    
+    .pricing-section {
+        padding: 5rem 0;
+        background-color: var(--light-bg);
+    }
+    
+    .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .pricing-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        text-align: center;
+        transition: var(--transition);
+    }
+    
+    .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .pricing-card.featured {
+        border: 2px solid var(--primary);
+        position: relative;
+    }
+    
+    .pricing-card.featured::before {
+        content: "الأكثر شيوعاً";
+        position: absolute;
+        top: -15px;
+        right: 50%;
+        transform: translateX(50%);
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+    
+    .price {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin: 1.5rem 0;
+        font-weight: bold;
+    }
+    
+    .pricing-features {
+        margin: 1.5rem 0;
+        text-align: right;
+    }
+    
+    .pricing-features li {
+        margin-bottom: 0.8rem;
+        position: relative;
+        padding-right: 1.5rem;
+    }
+    
+    .pricing-features li::before {
+        content: "✓";
+        color: var(--primary);
+        position: absolute;
+        right: 0;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .showcase-item {
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .showcase-item.reversed {
+            flex-direction: column;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-service">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>تطوير وكلاء الذكاء الاصطناعي</h2>
+            <p>حلول ذكية مخصصة تفهم لغتك ولهجتك وتلبي احتياجات عملك</p>
+        </div>
+    </div>
+</section>
+
+<!-- Service Overview -->
+<section class="service-feature">
+    <div class="container">
+        <h2 class="animate__animated">ماذا نقدم</h2>
+        <p class="animate__animated">نقدم خدمات تطوير وكلاء ذكاء اصطناعي متطورة تتميز بالفهم العميق للغة العربية بكافة لهجاتها، مما يمكنها من تقديم تجربة مستخدم استثنائية. وكلاؤنا قادرون على فهم احتياجات عملك الفريدة والتفاعل مع عملائك بطريقة طبيعية وسلسة.</p>
+        
+        <div class="service-feature-grid">
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>وكلاء مخصصون</h3>
+                <p>تطوير وكلاء ذكاء اصطناعي مخصصين تمامًا لتناسب احتياجات عملك وقطاعك.</p>
+            </div>
+            
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <h3>فهم اللهجات العربية</h3>
+                <p>تميز وكلاؤنا بفهم دقيق للهجات العربية المختلفة والتفاعل معها بسلاسة.</p>
+            </div>
+            
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>أتمتة العمليات</h3>
+                <p>أتمتة العمليات الروتينية وتحسين الكفاءة التشغيلية لمؤسستك.</p>
+            </div>
+            
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>تجربة عملاء متميزة</h3>
+                <p>تقديم تجربة عملاء متميزة من خلال وكلاء أذكياء قادرين على فهم وتلبية احتياجات العملاء.</p>
+            </div>
+            
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>تحليل البيانات</h3>
+                <p>جمع وتحليل البيانات لتحسين الأداء واتخاذ قرارات أفضل لعملك.</p>
+            </div>
+            
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>قابلية التطوير</h3>
+                <p>وكلاء قابلون للتطوير المستمر ليتماشوا مع نمو عملك وتطوره.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Showcase -->
+<section class="service-showcase">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>تطبيقات وكلاء الذكاء الاصطناعي</h2>
+            <p>حلول عملية لمختلف القطاعات والاحتياجات</p>
+        </div>
+        
+        <div class="showcase-item animate__animated">
+            <div class="showcase-content">
+                <h3>وكيل خدمة العملاء</h3>
+                <p>وكلاء متخصصون في خدمة العملاء قادرون على فهم استفسارات العملاء والرد عليها بدقة وفعالية. يمكنهم التعامل مع الاستفسارات المتكررة، وإدارة الشكاوى، وتوجيه العملاء إلى الموارد المناسبة، مما يوفر الوقت ويحسن تجربة العملاء.</p>
+                <ul>
+                    <li>فهم متطور للاستفسارات باللغة العربية</li>
+                    <li>توفير إجابات دقيقة وفورية</li>
+                    <li>توجيه المحادثات إلى موظفي الدعم عند الحاجة</li>
+                    <li>متاح على مدار الساعة دون انقطاع</li>
+                </ul>
+            </div>
+            <div class="showcase-image">
+                <img src="{{ url_for('static', filename='images/ai-agent-customer-service.svg') }}" alt="وكيل خدمة العملاء">
+            </div>
+        </div>
+        
+        <div class="showcase-item reversed animate__animated">
+            <div class="showcase-content">
+                <h3>وكيل أتمتة العمليات الداخلية</h3>
+                <p>تبسيط وأتمتة العمليات الداخلية للشركة مثل إدارة الموارد البشرية، والإدارة المالية، وإدارة المخزون. يمكن لهؤلاء الوكلاء تنفيذ المهام الروتينية، ومعالجة البيانات، وتنبيه الموظفين إلى الإجراءات المطلوبة في الوقت المناسب.</p>
+                <ul>
+                    <li>أتمتة المهام اليومية المتكررة</li>
+                    <li>تنسيق العمل بين الإدارات المختلفة</li>
+                    <li>تقليل الأخطاء البشرية في العمليات</li>
+                    <li>توفير الوقت والموارد</li>
+                </ul>
+            </div>
+            <div class="showcase-image">
+                <img src="{{ url_for('static', filename='images/ai-agent-automation.svg') }}" alt="وكيل أتمتة العمليات">
+            </div>
+        </div>
+        
+        <div class="showcase-item animate__animated">
+            <div class="showcase-content">
+                <h3>وكيل المبيعات والتسويق</h3>
+                <p>دعم عمليات المبيعات والتسويق من خلال تحليل بيانات العملاء، وتقديم توصيات مخصصة، وتحديد العملاء المحتملين. يمكن لهؤلاء الوكلاء تعزيز الحملات التسويقية وزيادة معدلات التحويل وتحسين أداء المبيعات.</p>
+                <ul>
+                    <li>تحليل سلوك المستهلكين واهتماماتهم</li>
+                    <li>توجيه العروض المناسبة للعملاء المناسبين</li>
+                    <li>متابعة وتحسين أداء الحملات التسويقية</li>
+                    <li>تقديم تقارير تحليلية مفصلة</li>
+                </ul>
+            </div>
+            <div class="showcase-image">
+                <img src="{{ url_for('static', filename='images/ai-agent-sales.svg') }}" alt="وكيل المبيعات والتسويق">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Development Process -->
+<section class="faq-section">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>عملية تطوير وكلاء الذكاء الاصطناعي</h2>
+            <p>منهجية مدروسة لتقديم وكلاء أذكياء يلبون احتياجاتك</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="faq-item animate__animated">
+                <div class="faq-question">
+                    <span>1. تحليل المتطلبات وفهم الاحتياجات</span>
+                </div>
+                <div class="faq-answer">
+                    <p>نبدأ بفهم عميق لاحتياجات عملك وأهدافك. نجري مقابلات مع أصحاب المصلحة، ونحلل العمليات الحالية، ونحدد المتطلبات الوظيفية والتقنية للوكيل الذكي.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item animate__animated">
+                <div class="faq-question">
+                    <span>2. تصميم قدرات الوكيل</span>
+                </div>
+                <div class="faq-answer">
+                    <p>نصمم قدرات الوكيل وتفاعلاته بناءً على المتطلبات. نحدد المهام التي سيقوم بها الوكيل، والبيانات التي سيستخدمها، وكيفية تفاعله مع المستخدمين والأنظمة الأخرى.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item animate__animated">
+                <div class="faq-question">
+                    <span>3. تطوير النموذج الأولي</span>
+                </div>
+                <div class="faq-answer">
+                    <p>نقوم بتطوير نموذج أولي للوكيل ونختبره داخليًا. نقيم أداءه ونحسن قدراته قبل إطلاقه للمستخدمين النهائيين.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item animate__animated">
+                <div class="faq-question">
+                    <span>4. تدريب الوكيل وتحسين أدائه</span>
+                </div>
+                <div class="faq-answer">
+                    <p>نقوم بتدريب الوكيل على البيانات الخاصة بعملك، مع التركيز على فهم اللغة العربية ولهجاتها. نحسن أداء الوكيل بناءً على التغذية الراجعة والتحليلات.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item animate__animated">
+                <div class="faq-question">
+                    <span>5. الاختبار والتحسين</span>
+                </div>
+                <div class="faq-answer">
+                    <p>نختبر الوكيل بشكل شامل في بيئة تشبه بيئة الإنتاج. نحدد المشكلات ونصححها ونحسن أداء الوكيل قبل إطلاقه.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item animate__animated">
+                <div class="faq-question">
+                    <span>6. الإطلاق والصيانة</span>
+                </div>
+                <div class="faq-answer">
+                    <p>نطلق الوكيل في بيئة الإنتاج ونراقب أداءه. نقدم الدعم والصيانة المستمرة ونطور قدرات الوكيل بناءً على الاحتياجات المتغيرة والتكنولوجيا الجديدة.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing-section">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>باقات تطوير وكلاء الذكاء الاصطناعي</h2>
+            <p>حلول مرنة تناسب مختلف الاحتياجات والميزانيات</p>
+        </div>
+        
+        <div class="pricing-cards">
+            <div class="pricing-card animate__animated">
+                <h3>الباقة الأساسية</h3>
+                <div class="price">ابتداءً من 15,000 ر.س</div>
+                <p>مناسبة للشركات الصغيرة والمتوسطة التي تبدأ رحلتها مع الذكاء الاصطناعي</p>
+                <ul class="pricing-features">
+                    <li>وكيل ذكي أساسي مع قدرات محددة</li>
+                    <li>دعم لغة عربية فصحى</li>
+                    <li>تكامل مع منصة واحدة</li>
+                    <li>تدريب أساسي على بيانات محدودة</li>
+                    <li>3 أشهر دعم فني</li>
+                </ul>
+                <a href="{{ url_for('contact.contact') }}" class="btn">اطلب عرض سعر</a>
+            </div>
+            
+            <div class="pricing-card featured animate__animated">
+                <h3>الباقة المتقدمة</h3>
+                <div class="price">ابتداءً من 25,000 ر.س</div>
+                <p>مثالية للشركات التي تسعى لتحسين عملياتها وتقديم تجربة متميزة لعملائها</p>
+                <ul class="pricing-features">
+                    <li>وكيل ذكي متقدم مع قدرات متعددة</li>
+                    <li>دعم للهجات عربية متعددة</li>
+                    <li>تكامل مع منصتين</li>
+                    <li>تدريب متقدم على بيانات موسعة</li>
+                    <li>6 أشهر دعم فني</li>
+                    <li>تقارير أداء شهرية</li>
+                </ul>
+                <a href="{{ url_for('contact.contact') }}" class="btn">اطلب عرض سعر</a>
+            </div>
+            
+            <div class="pricing-card animate__animated">
+                <h3>الباقة الاحترافية</h3>
+                <div class="price">ابتداءً من 40,000 ر.س</div>
+                <p>للمؤسسات الكبيرة التي تتطلب حلولاً متطورة وقابلة للتخصيص بشكل كامل</p>
+                <ul class="pricing-features">
+                    <li>وكيل ذكي احترافي مع قدرات متطورة</li>
+                    <li>دعم كامل للغة العربية ولهجاتها</li>
+                    <li>تكامل مع منصات متعددة</li>
+                    <li>تدريب مكثف على بيانات شاملة</li>
+                    <li>12 شهر دعم فني</li>
+                    <li>تقارير أداء أسبوعية</li>
+                    <li>تحديثات وتحسينات مستمرة</li>
+                </ul>
+                <a href="{{ url_for('contact.contact') }}" class="btn">اطلب عرض سعر</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta">
+    <div class="container">
+        <h2 class="animate__animated">جاهز لتطوير وكيل ذكاء اصطناعي يلبي احتياجاتك؟</h2>
+        <p class="animate__animated">تواصل معنا اليوم لمناقشة كيف يمكننا مساعدتك في تطوير وكيل ذكاء اصطناعي يناسب احتياجات عملك.</p>
+        <a href="{{ url_for('contact.contact') }}" class="btn animate__animated">تواصل معنا</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // FAQs toggle
+    const questions = document.querySelectorAll('.faq-question');
+    
+    questions.forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+    
+    // Initially hide all answers
+    document.querySelectorAll('.faq-answer').forEach(answer => {
+        answer.style.display = 'none';
+    });
+});
+</script>
+{% endblock %} 

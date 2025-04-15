@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="contact-section">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>اتصل بنا</h2>
+            <p>نحن هنا للإجابة على استفساراتك ومساعدتك في اختيار الحل المناسب</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-form animate__animated">
+                <form method="POST" action="{{ url_for('contact.contact') }}">
+                    <div class="form-group">
+                        <label for="name">الاسم</label>
+                        <input type="text" id="name" name="name" required>
+                        {% if form.errors.get('name') %}
+                            <div class="error-message">{{ form.errors.get('name') }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" required>
+                        {% if form.errors.get('email') %}
+                            <div class="error-message">{{ form.errors.get('email') }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inquiry_type">نوع الاستفسار</label>
+                        <select id="inquiry_type" name="inquiry_type" required>
+                            <option value="">-- اختر نوع الاستفسار --</option>
+                            <option value="consultation">طلب استشارة</option>
+                            <option value="demo">طلب عرض توضيحي</option>
+                            <option value="pricing">استفسار عن الأسعار</option>
+                            <option value="partnership">فرص الشراكة</option>
+                            <option value="support">الدعم الفني</option>
+                            <option value="other">استفسار آخر</option>
+                        </select>
+                        {% if form.errors.get('inquiry_type') %}
+                            <div class="error-message">{{ form.errors.get('inquiry_type') }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">الرسالة</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                        {% if form.errors.get('message') %}
+                            <div class="error-message">{{ form.errors.get('message') }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <button type="submit" class="btn">إرسال الرسالة</button>
+                </form>
+            </div>
+            
+            <div class="contact-info animate__animated">
+                <div class="contact-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>البريد الإلكتروني</h3>
+                        <p>info@wakily.sa</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>الهاتف</h3>
+                        <p>+966 12 345 6789</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>العنوان</h3>
+                        <p>الرياض، المملكة العربية السعودية</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>ساعات العمل</h3>
+                        <p>الأحد - الخميس: 9:00 صباحًا - 5:00 مساءً</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            // Client-side validation could be added here if needed
+        });
+    }
+});
+</script>
+{% endblock %} 

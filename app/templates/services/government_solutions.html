@@ -1,0 +1,553 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+    .hero-service {
+        background: linear-gradient(135deg, rgba(94, 53, 177, 0.1) 0%, rgba(33, 150, 243, 0.1) 100%);
+        padding: 6rem 0 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .solutions-section {
+        padding: 5rem 0;
+    }
+    
+    .solutions-intro {
+        margin-bottom: 3rem;
+    }
+    
+    .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .solution-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .solution-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .solution-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(94, 53, 177, 0.1) 0%, rgba(33, 150, 243, 0.1) 100%);
+        border-radius: 50%;
+    }
+    
+    .solution-icon i {
+        font-size: 2rem;
+        color: var(--primary);
+    }
+    
+    .solution-content {
+        flex-grow: 1;
+    }
+    
+    .solution-footer {
+        margin-top: 1.5rem;
+    }
+    
+    .features-section {
+        padding: 5rem 0;
+        background-color: var(--light-bg);
+    }
+    
+    .features-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+    }
+    
+    .feature-item {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        width: calc(33.333% - 1.5rem);
+        min-width: 250px;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .feature-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(94, 53, 177, 0.15);
+    }
+    
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(94, 53, 177, 0.1) 0%, rgba(33, 150, 243, 0.1) 100%);
+        border-radius: 50%;
+    }
+    
+    .feature-icon i {
+        font-size: 1.5rem;
+        color: var(--primary);
+    }
+    
+    .case-studies {
+        padding: 5rem 0;
+    }
+    
+    .case-study {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        overflow: hidden;
+        margin-bottom: 3rem;
+        transition: var(--transition);
+    }
+    
+    .case-study:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .case-header {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        color: var(--white);
+        padding: 2rem;
+    }
+    
+    .case-header h3 {
+        color: var(--white);
+        margin-bottom: 0.5rem;
+    }
+    
+    .case-content {
+        padding: 2rem;
+    }
+    
+    .case-result {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+    
+    .result-item {
+        flex: 1;
+        min-width: 200px;
+        text-align: center;
+        padding: 1.5rem;
+        background-color: var(--light-bg);
+        border-radius: var(--border-radius);
+    }
+    
+    .result-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+    
+    .sectors-section {
+        padding: 5rem 0;
+        background-color: var(--light-bg);
+    }
+    
+    .sectors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .sector-item {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        text-align: center;
+    }
+    
+    .sector-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .sector-icon {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .feature-item {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-service">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>حلول حكومية متقدمة</h2>
+            <p>تمكين الجهات الحكومية من خلال الذكاء الاصطناعي واللغة العربية</p>
+        </div>
+    </div>
+</section>
+
+<!-- Solutions Overview -->
+<section class="solutions-section">
+    <div class="container">
+        <div class="solutions-intro animate__animated">
+            <h2>حلول مبتكرة للقطاع الحكومي</h2>
+            <p>نقدم حلول ذكاء اصطناعي متطورة مخصصة للقطاع الحكومي، تتميز بفهم عميق للغة العربية وتلبي الاحتياجات الفريدة للمؤسسات الحكومية. تساعد حلولنا على تحسين الخدمات المقدمة للمواطنين، وزيادة الكفاءة التشغيلية، وتعزيز اتخاذ القرارات المستندة إلى البيانات.</p>
+        </div>
+        
+        <div class="solutions-grid">
+            <div class="solution-card animate__animated">
+                <div class="solution-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="solution-content">
+                    <h3>وكلاء خدمة المواطنين</h3>
+                    <p>وكلاء ذكاء اصطناعي متطورة تفهم اللغة العربية بمختلف لهجاتها، لتقديم خدمات آلية للمواطنين على مدار الساعة.</p>
+                    <ul>
+                        <li>الرد على استفسارات المواطنين بدقة عالية</li>
+                        <li>توجيه المواطنين إلى الخدمات المناسبة</li>
+                        <li>تبسيط الإجراءات وتسريع تقديم الخدمات</li>
+                        <li>تحسين تجربة المستخدم وزيادة رضا المواطنين</li>
+                    </ul>
+                </div>
+                <div class="solution-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+            
+            <div class="solution-card animate__animated">
+                <div class="solution-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="solution-content">
+                    <h3>أتمتة العمليات الحكومية</h3>
+                    <p>حلول أتمتة ذكية للعمليات الحكومية الداخلية والخارجية، تعتمد على الذكاء الاصطناعي لتحسين الكفاءة وتقليل الأخطاء.</p>
+                    <ul>
+                        <li>أتمتة المهام الروتينية والعمليات المتكررة</li>
+                        <li>تسريع معالجة الطلبات والإجراءات</li>
+                        <li>تقليل التدخل البشري والأخطاء المرتبطة به</li>
+                        <li>تكامل مع الأنظمة الحكومية الحالية</li>
+                    </ul>
+                </div>
+                <div class="solution-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+            
+            <div class="solution-card animate__animated">
+                <div class="solution-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="solution-content">
+                    <h3>تحليل البيانات للسياسات العامة</h3>
+                    <p>منصات تحليل بيانات متقدمة لدعم صنع القرار وتطوير السياسات العامة، باستخدام تقنيات الذكاء الاصطناعي.</p>
+                    <ul>
+                        <li>تحليل البيانات الضخمة وغير المهيكلة</li>
+                        <li>استخراج رؤى قيمة من البيانات الحكومية</li>
+                        <li>التنبؤ بالاتجاهات وتحديد الفرص والتحديات</li>
+                        <li>دعم اتخاذ القرارات المستندة إلى البيانات</li>
+                    </ul>
+                </div>
+                <div class="solution-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+            
+            <div class="solution-card animate__animated">
+                <div class="solution-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="solution-content">
+                    <h3>حلول امتثال ومراقبة</h3>
+                    <p>أنظمة ذكية لمراقبة الامتثال للأنظمة واللوائح، وتحديد المخالفات والانحرافات بشكل استباقي.</p>
+                    <ul>
+                        <li>مراقبة آلية للامتثال للوائح والتنظيمات</li>
+                        <li>تحديد المخالفات والتجاوزات في وقت مبكر</li>
+                        <li>تقليل المخاطر التنظيمية والقانونية</li>
+                        <li>تقارير امتثال دورية وتنبيهات فورية</li>
+                    </ul>
+                </div>
+                <div class="solution-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+            
+            <div class="solution-card animate__animated">
+                <div class="solution-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="solution-content">
+                    <h3>معالجة المستندات الحكومية</h3>
+                    <p>حلول متقدمة لمعالجة وتحليل المستندات الحكومية باللغة العربية، باستخدام تقنيات معالجة اللغة الطبيعية.</p>
+                    <ul>
+                        <li>استخراج البيانات من المستندات الحكومية</li>
+                        <li>تصنيف وفهرسة المستندات بشكل آلي</li>
+                        <li>تلخيص التقارير والمستندات الطويلة</li>
+                        <li>البحث الذكي في المحتوى العربي</li>
+                    </ul>
+                </div>
+                <div class="solution-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+            
+            <div class="solution-card animate__animated">
+                <div class="solution-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="solution-content">
+                    <h3>تحليل آراء المواطنين</h3>
+                    <p>منصات تحليل متقدمة لفهم آراء وتوجهات المواطنين من خلال تحليل البيانات من وسائل التواصل الاجتماعي والمصادر الأخرى.</p>
+                    <ul>
+                        <li>تحليل آراء المواطنين باللغة العربية</li>
+                        <li>رصد الاتجاهات والقضايا المجتمعية</li>
+                        <li>قياس مستوى الرضا عن الخدمات الحكومية</li>
+                        <li>توفير رؤى لتحسين السياسات العامة</li>
+                    </ul>
+                </div>
+                <div class="solution-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Features -->
+<section class="features-section">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>المميزات الرئيسية</h2>
+            <p>ما يميز حلولنا الحكومية عن غيرها</p>
+        </div>
+        
+        <div class="features-container">
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <div>
+                    <h3>فهم متقدم للغة العربية</h3>
+                    <p>دقة تصل إلى 92% في فهم اللغة العربية بمختلف لهجاتها وسياقاتها.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div>
+                    <h3>أمان وخصوصية عالية</h3>
+                    <p>حماية متقدمة للبيانات والمعلومات الحكومية، مع الامتثال للوائح المحلية.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <div>
+                    <h3>استضافة محلية</h3>
+                    <p>إمكانية استضافة الحلول محليًا على البنية التحتية للجهة الحكومية.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <div>
+                    <h3>تكامل سلس</h3>
+                    <p>تكامل سهل مع الأنظمة والمنصات الحكومية الحالية.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <div>
+                    <h3>أداء عالي</h3>
+                    <p>تحسين الأداء التشغيلي وتقليل الوقت اللازم لتنفيذ العمليات.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </div>
+                <div>
+                    <h3>قابلية التوسع</h3>
+                    <p>حلول قابلة للتوسع تتناسب مع نمو الاحتياجات الحكومية.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Case Studies -->
+<section class="case-studies">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>قصص نجاح حكومية</h2>
+            <p>نماذج من تطبيقاتنا الناجحة في القطاع الحكومي</p>
+        </div>
+        
+        <div class="case-study animate__animated">
+            <div class="case-header">
+                <h3>وكيل خدمة المواطنين لوزارة حكومية</h3>
+                <p>تطوير وكيل ذكاء اصطناعي متقدم لخدمة المواطنين لإحدى الوزارات الرئيسية</p>
+            </div>
+            <div class="case-content">
+                <p>قمنا بتطوير وكيل ذكاء اصطناعي متقدم لخدمة المواطنين لإحدى الوزارات الرئيسية، قادر على فهم استفسارات المواطنين باللغة العربية ولهجاتها المختلفة، وتقديم إجابات دقيقة ومساعدة في إتمام الإجراءات الحكومية. يعمل الوكيل على مدار الساعة عبر موقع الوزارة الإلكتروني، وتطبيق الهاتف المحمول، ومنصات التواصل الاجتماعي.</p>
+                
+                <div class="case-result">
+                    <div class="result-item">
+                        <div class="result-value">85%</div>
+                        <div class="result-label">نسبة الاستفسارات التي تمت معالجتها آلياً</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-value">70%</div>
+                        <div class="result-label">تخفيض في وقت الانتظار</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-value">92%</div>
+                        <div class="result-label">معدل رضا المواطنين</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="case-study animate__animated">
+            <div class="case-header">
+                <h3>نظام تحليل البيانات لصنع القرار</h3>
+                <p>منصة متقدمة لتحليل البيانات ودعم صنع القرار لهيئة حكومية</p>
+            </div>
+            <div class="case-content">
+                <p>طورنا منصة متقدمة لتحليل البيانات ودعم صنع القرار لإحدى الهيئات الحكومية، تعتمد على تقنيات الذكاء الاصطناعي لتحليل كميات ضخمة من البيانات المتنوعة، واستخلاص رؤى قيمة تساعد في تطوير السياسات العامة واتخاذ القرارات الاستراتيجية. تدعم المنصة اللغة العربية بشكل كامل، وتوفر تقارير تحليلية متطورة ولوحات معلومات تفاعلية.</p>
+                
+                <div class="case-result">
+                    <div class="result-item">
+                        <div class="result-value">60%</div>
+                        <div class="result-label">تحسين في دقة التنبؤات</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-value">40%</div>
+                        <div class="result-label">تسريع في عملية صنع القرار</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-value">30%</div>
+                        <div class="result-label">تحسين في تخصيص الموارد</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Government Sectors -->
+<section class="sectors-section">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>القطاعات الحكومية</h2>
+            <p>حلول مخصصة لمختلف القطاعات الحكومية</p>
+        </div>
+        
+        <div class="sectors-grid">
+            <div class="sector-item animate__animated">
+                <div class="sector-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3>الجهات التشريعية</h3>
+                <p>حلول لدعم صياغة القوانين والتشريعات، وتحليل التأثير التنظيمي، ومعالجة المقترحات.</p>
+            </div>
+            
+            <div class="sector-item animate__animated">
+                <div class="sector-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <h3>الجهات القضائية</h3>
+                <p>أنظمة لتحليل القضايا، وتصنيف المستندات القانونية، وتبسيط الإجراءات القضائية.</p>
+            </div>
+            
+            <div class="sector-item animate__animated">
+                <div class="sector-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>التعليم</h3>
+                <p>حلول لتحسين العملية التعليمية، وتحليل أداء الطلاب، وأتمتة الإجراءات الإدارية.</p>
+            </div>
+            
+            <div class="sector-item animate__animated">
+                <div class="sector-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <h3>الرعاية الصحية</h3>
+                <p>أنظمة لإدارة المستشفيات الحكومية، وتحليل البيانات الصحية، وتحسين جودة الخدمات.</p>
+            </div>
+            
+            <div class="sector-item animate__animated">
+                <div class="sector-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>الأمن</h3>
+                <p>تقنيات متقدمة لدعم الأجهزة الأمنية، وتحليل البيانات، وتعزيز الاستجابة للحوادث.</p>
+            </div>
+            
+            <div class="sector-item animate__animated">
+                <div class="sector-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <h3>المالية</h3>
+                <p>حلول لإدارة الموارد المالية، وتحليل الإنفاق، ومكافحة الاحتيال، وتحسين التحصيل.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta">
+    <div class="container">
+        <h2 class="animate__animated">هل أنت جاهز لتحويل الخدمات الحكومية مع قوة الذكاء الاصطناعي العربي؟</h2>
+        <p class="animate__animated">تواصل معنا اليوم لمعرفة كيف يمكننا مساعدة جهتك الحكومية في تقديم خدمات أفضل وأكثر كفاءة من خلال حلول الذكاء الاصطناعي المتخصصة.</p>
+        <a href="{{ url_for('contact.contact') }}" class="btn animate__animated">طلب استشارة</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %} 

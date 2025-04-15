@@ -1,0 +1,553 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+    .hero-service {
+        background: linear-gradient(135deg, rgba(94, 53, 177, 0.1) 0%, rgba(33, 150, 243, 0.1) 100%);
+        padding: 6rem 0 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .service-section {
+        padding: 5rem 0;
+    }
+    
+    .service-intro {
+        margin-bottom: 3rem;
+    }
+    
+    .service-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .feature-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        height: 100%;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(94, 53, 177, 0.1) 0%, rgba(33, 150, 243, 0.1) 100%);
+        border-radius: 50%;
+    }
+    
+    .feature-icon i {
+        font-size: 1.8rem;
+        color: var(--primary);
+    }
+    
+    .tech-stack {
+        padding: 5rem 0;
+        background-color: var(--light-bg);
+    }
+    
+    .stack-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .stack-item {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        text-align: center;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+    }
+    
+    .stack-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(94, 53, 177, 0.15);
+    }
+    
+    .stack-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+    }
+    
+    .development-process {
+        padding: 5rem 0;
+    }
+    
+    .process-timeline {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+        padding-right: 2rem;
+    }
+    
+    .process-timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 10px;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        height: calc(100% - 80px);
+    }
+    
+    .process-step {
+        position: relative;
+        margin-bottom: 3rem;
+        padding-right: 2.5rem;
+    }
+    
+    .process-step::before {
+        content: "";
+        position: absolute;
+        right: -5px;
+        top: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+    
+    .process-content {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+    }
+    
+    .process-content h3 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+    
+    .process-content h3 i {
+        color: var(--secondary);
+    }
+    
+    .projects-showcase {
+        padding: 5rem 0;
+        background-color: var(--light-bg);
+    }
+    
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .project-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+    }
+    
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .project-image {
+        height: 200px;
+        background-color: var(--primary-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 3rem;
+    }
+    
+    .project-content {
+        padding: 2rem;
+    }
+    
+    .project-content h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+    
+    .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    .tech-tag {
+        background-color: rgba(94, 53, 177, 0.1);
+        color: var(--primary);
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .process-timeline {
+            padding-right: 1.5rem;
+        }
+        
+        .process-timeline::before {
+            right: 8px;
+        }
+        
+        .process-step {
+            padding-right: 2rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-service">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>تطوير البرمجيات السريع</h2>
+            <p>حلول برمجية مبتكرة ومدعومة بالذكاء الاصطناعي لتسريع نمو أعمالك</p>
+        </div>
+    </div>
+</section>
+
+<!-- Service Overview -->
+<section class="service-section">
+    <div class="container">
+        <div class="service-intro animate__animated">
+            <h2>تطوير تطبيقات وحلول مدعومة بالذكاء الاصطناعي</h2>
+            <p>نقدم خدمات تطوير برمجيات متكاملة تجمع بين الخبرة التقنية والابتكار المدعوم بالذكاء الاصطناعي. نتميز بفهمنا العميق للغة العربية واحتياجات السوق المحلية، مما يمكننا من تقديم حلول مخصصة تلبي احتياجاتك الفريدة وتسرع من نمو أعمالك.</p>
+        </div>
+        
+        <div class="service-features">
+            <div class="feature-card animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>تطوير تطبيقات الهاتف المحمول</h3>
+                <p>تطوير تطبيقات مبتكرة للهواتف الذكية لأنظمة iOS وAndroid، مع التركيز على تجربة المستخدم وأداء التطبيق وسهولة الاستخدام.</p>
+                <ul>
+                    <li>تطبيقات أصلية (Native) لـ iOS وAndroid</li>
+                    <li>تطبيقات هجينة بتكلفة أقل وأداء عالٍ</li>
+                    <li>واجهات مستخدم سلسة وجذابة</li>
+                    <li>تكامل مع واجهات برمجة التطبيقات APIs</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>تطوير تطبيقات الويب</h3>
+                <p>إنشاء مواقع وتطبيقات ويب متقدمة ومتجاوبة تعمل على جميع الأجهزة والمتصفحات، مع التركيز على الأداء والأمان وتجربة المستخدم.</p>
+                <ul>
+                    <li>واجهات مستخدم حديثة ومتجاوبة</li>
+                    <li>تطبيقات ويب أحادية الصفحة SPA</li>
+                    <li>منصات وبوابات معقدة</li>
+                    <li>تحسين محركات البحث SEO</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>تطوير الواجهات الخلفية</h3>
+                <p>بناء واجهات خلفية قوية وقابلة للتطوير لدعم تطبيقاتك وخدماتك، مع التركيز على الأداء والأمان وقابلية التوسع.</p>
+                <ul>
+                    <li>تطوير واجهات برمجة التطبيقات RESTful و GraphQL</li>
+                    <li>معالجة البيانات وتخزينها</li>
+                    <li>تكامل مع خدمات الطرف الثالث</li>
+                    <li>تحسين الأداء والأمان</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>تكامل الذكاء الاصطناعي</h3>
+                <p>دمج حلول الذكاء الاصطناعي المتقدمة في تطبيقاتك لتعزيز قدراتها وتوفير تجارب مستخدم فريدة، مع التركيز على فهم اللغة العربية.</p>
+                <ul>
+                    <li>دمج نماذج اللغة الكبيرة في التطبيقات</li>
+                    <li>تطوير الشات بوت وواجهات المحادثة</li>
+                    <li>تحليل البيانات واستخراج الرؤى</li>
+                    <li>أتمتة العمليات والمهام</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3>خدمات السحابة</h3>
+                <p>تطوير وإدارة حلول سحابية قابلة للتوسع وفعالة من حيث التكلفة، مع التركيز على الأداء والأمان والموثوقية.</p>
+                <ul>
+                    <li>تطوير البنية التحتية كـ IaC</li>
+                    <li>إدارة السحابة وتحسين التكاليف</li>
+                    <li>حلول Serverless والحاويات</li>
+                    <li>التكامل والنشر المستمر CI/CD</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card animate__animated">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>أمان البرمجيات</h3>
+                <p>تعزيز أمان تطبيقاتك وحماية بياناتك من التهديدات السيبرانية، مع التركيز على الامتثال للمعايير والأنظمة المحلية والعالمية.</p>
+                <ul>
+                    <li>اختبار أمان التطبيقات</li>
+                    <li>تشفير البيانات وإدارة الهويات</li>
+                    <li>الامتثال للأنظمة واللوائح</li>
+                    <li>حماية البيانات والخصوصية</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Stack -->
+<section class="tech-stack">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>حزمة التقنيات</h2>
+            <p>أحدث التقنيات وأفضل الممارسات لتطوير برمجيات عالية الجودة</p>
+        </div>
+        
+        <div class="stack-grid">
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fab fa-react"></i>
+                </div>
+                <h3>React</h3>
+            </div>
+            
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fab fa-angular"></i>
+                </div>
+                <h3>Angular</h3>
+            </div>
+            
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fab fa-vuejs"></i>
+                </div>
+                <h3>Vue.js</h3>
+            </div>
+            
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fab fa-node-js"></i>
+                </div>
+                <h3>Node.js</h3>
+            </div>
+            
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h3>Python</h3>
+            </div>
+            
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fab fa-php"></i>
+                </div>
+                <h3>PHP</h3>
+            </div>
+            
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>SQL/NoSQL</h3>
+            </div>
+            
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fab fa-aws"></i>
+                </div>
+                <h3>AWS</h3>
+            </div>
+            
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fab fa-google"></i>
+                </div>
+                <h3>GCP</h3>
+            </div>
+            
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fab fa-microsoft"></i>
+                </div>
+                <h3>Azure</h3>
+            </div>
+            
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fab fa-docker"></i>
+                </div>
+                <h3>Docker</h3>
+            </div>
+            
+            <div class="stack-item animate__animated">
+                <div class="stack-icon">
+                    <i class="fab fa-kubernetes"></i>
+                </div>
+                <h3>Kubernetes</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Development Process -->
+<section class="development-process">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>منهجية التطوير السريع</h2>
+            <p>عملية مدروسة لتسليم حلول برمجية عالية الجودة في أسرع وقت</p>
+        </div>
+        
+        <div class="process-timeline">
+            <div class="process-step animate__animated">
+                <div class="process-content">
+                    <h3><i class="fas fa-search"></i> اكتشاف وتحليل</h3>
+                    <p>نبدأ بفهم عميق لأهدافك واحتياجاتك التجارية والتقنية. نجري مقابلات مع أصحاب المصلحة ونحلل العمليات الحالية ونحدد المتطلبات الرئيسية للمشروع.</p>
+                </div>
+            </div>
+            
+            <div class="process-step animate__animated">
+                <div class="process-content">
+                    <h3><i class="fas fa-pencil-ruler"></i> التصميم والتخطيط</h3>
+                    <p>نصمم البنية والواجهات ونضع خطة تنفيذ تفصيلية. نركز على تجربة المستخدم والأداء والقابلية للتوسع، مع مراعاة احتياجات المستخدمين العرب.</p>
+                </div>
+            </div>
+            
+            <div class="process-step animate__animated">
+                <div class="process-content">
+                    <h3><i class="fas fa-code"></i> التطوير السريع</h3>
+                    <p>نتبع منهجية Agile ونعمل في تكرارات قصيرة (Sprint) لتقديم نتائج ملموسة بسرعة. نستخدم أحدث التقنيات وأفضل الممارسات لضمان جودة الكود والأداء.</p>
+                </div>
+            </div>
+            
+            <div class="process-step animate__animated">
+                <div class="process-content">
+                    <h3><i class="fas fa-vial"></i> الاختبار والضمان</h3>
+                    <p>نجري اختبارات شاملة للوظائف والأداء والأمان والتوافق، مع التركيز على تجربة المستخدم العربي ودعم اللغة العربية بشكل كامل.</p>
+                </div>
+            </div>
+            
+            <div class="process-step animate__animated">
+                <div class="process-content">
+                    <h3><i class="fas fa-rocket"></i> النشر والإطلاق</h3>
+                    <p>ننشر التطبيق في بيئة الإنتاج ونضمن انتقالًا سلسًا. نوفر دعمًا كاملًا خلال مرحلة الإطلاق لضمان تجربة مستخدم مثالية.</p>
+                </div>
+            </div>
+            
+            <div class="process-step animate__animated">
+                <div class="process-content">
+                    <h3><i class="fas fa-sync"></i> الدعم والتحسين المستمر</h3>
+                    <p>نقدم دعمًا مستمرًا ونراقب أداء التطبيق ونجمع التغذية الراجعة من المستخدمين. نقترح ونفذ تحسينات لضمان تطور التطبيق وتلبية احتياجات المستخدمين المتغيرة.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Showcase -->
+<section class="projects-showcase">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>مشاريع مميزة</h2>
+            <p>نماذج من مشاريعنا الناجحة في مختلف القطاعات</p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card animate__animated">
+                <div class="project-image">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="project-content">
+                    <h3>منصة تجارة إلكترونية ذكية</h3>
+                    <p>تطوير منصة تجارة إلكترونية متكاملة مدعومة بالذكاء الاصطناعي، تقدم تجربة تسوق مخصصة وتوصيات ذكية باللغة العربية للمستخدمين.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">NLP</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card animate__animated">
+                <div class="project-image">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="project-content">
+                    <h3>منصة تعليمية تفاعلية</h3>
+                    <p>تطوير منصة تعليمية تفاعلية توفر تجربة تعلم مخصصة باللغة العربية، مع دعم الذكاء الاصطناعي لتحليل تقدم الطلاب وتقديم توصيات التعلم.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">ML</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card animate__animated">
+                <div class="project-image">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="project-content">
+                    <h3>نظام إدارة صحية</h3>
+                    <p>تطوير نظام إدارة صحية متكامل يدعم اللغة العربية، يساعد المستشفيات والعيادات في إدارة المرضى والمواعيد والسجلات الطبية بكفاءة.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Oracle</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta">
+    <div class="container">
+        <h2 class="animate__animated">هل أنت جاهز لتطوير حل برمجي مبتكر لعملك؟</h2>
+        <p class="animate__animated">تواصل معنا اليوم لمناقشة كيف يمكننا مساعدتك في تطوير حلول برمجية مدعومة بالذكاء الاصطناعي تلبي احتياجات عملك وتسرع من نموه.</p>
+        <a href="{{ url_for('contact.contact') }}" class="btn animate__animated">تواصل معنا</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %} 

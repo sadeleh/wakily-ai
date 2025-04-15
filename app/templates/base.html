@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="{% if g.lang_code == 'ar' %}ar{% else %}en{% endif %}" dir="{% if g.lang_code == 'ar' %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }}{% else %}Wakily.sa - AI Development{% endif %}</title>
+    
+    <!-- Google Fonts - Noto Kufi Arabic + Fira Code for code styling -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Lottie Player for animations -->
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    
+    <!-- Particle.js for matrix effect - Update with direct CDN link -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <!-- Typed.js for terminal text effect -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    
+    {% block head %}{% endblock %}
+</head>
+<body class="code-theme">
+    <div class="matrix-bg" id="matrix-background"></div>
+    
+    <header class="code-header">
+        <nav class="main-nav">
+            <div class="container">
+                <div class="logo">
+                    <a href="{{ url_for('main.index') }}" class="logo-text">
+                        <span class="code-tag">&lt;</span>Wakily<span class="function-text">.ai</span><span class="code-tag">/&gt;</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="{{ url_for('main.index') }}" class="{% if request.endpoint == 'main.index' %}active{% endif %}">الرئيسية</a>
+                    <a href="{{ url_for('services.services_overview') }}" class="{% if 'services.' in request.endpoint %}active{% endif %}">خدماتنا</a>
+                    <a href="{{ url_for('about.about') }}" class="{% if 'about.' in request.endpoint %}active{% endif %}">من نحن</a>
+                    <a href="{{ url_for('about.arabic_ai') }}">تقنية الذكاء العربي</a>
+                    <a href="{{ url_for('contact.contact') }}" class="{% if request.endpoint == 'contact.contact' %}active{% endif %}">اتصل بنا</a>
+                </div>
+                <div class="language-switcher">
+                    <button class="terminal-btn lang-btn">$ lang --switch="English"</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            <span class="console-symbol">></span> {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="code-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><span class="code-comment">// </span>Wakily.sa</h3>
+                    <p>رواد الذكاء الاصطناعي العربي للتكامل السلس والحلول الذكية</p>
+                </div>
+                <div class="footer-section">
+                    <h3><span class="code-comment">// </span>روابط سريعة</h3>
+                    <ul>
+                        <li><span class="console-symbol">></span> <a href="{{ url_for('main.index') }}">الرئيسية</a></li>
+                        <li><span class="console-symbol">></span> <a href="{{ url_for('services.services_overview') }}">خدماتنا</a></li>
+                        <li><span class="console-symbol">></span> <a href="{{ url_for('about.about') }}">من نحن</a></li>
+                        <li><span class="console-symbol">></span> <a href="{{ url_for('about.arabic_ai') }}">تقنية الذكاء العربي</a></li>
+                        <li><span class="console-symbol">></span> <a href="{{ url_for('contact.contact') }}">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3><span class="code-comment">// </span>اتصل بنا</h3>
+                    <p><span class="code-keyword">const</span> <span class="code-variable">email</span> = <span class="code-string">"info@wakily.sa"</span>;</p>
+                    <p><span class="code-keyword">const</span> <span class="code-variable">phone</span> = <span class="code-string">"+966 12 345 6789"</span>;</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><span class="code-comment">/* Copyright © 2023 Wakily.sa. All rights reserved. */</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+    
+    <!-- Chat Robot Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-toggle" id="chatToggle">
+            <dotlottie-player src="https://lottie.host/8d356d88-86fd-4519-a142-b31f9b3b397f/u1u3rWkcRZ.lottie" background="transparent" speed="1" style="width: 100px; height: 100px" loop autoplay></dotlottie-player>
+        </div>
+        <div class="chat-container terminal-window" id="chatContainer">
+            <div class="chat-header terminal-header">
+                <div class="terminal-buttons">
+                    <span class="terminal-button close"></span>
+                    <span class="terminal-button minimize"></span>
+                    <span class="terminal-button maximize"></span>
+                </div>
+                <h3>wakily@ai:~$ ./chat.sh</h3>
+                <button id="closeChat"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-body terminal-body">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot">
+                        <span class="console-symbol">></span>
+                        <div class="message-content">
+                            <span class="typing-text">مرحباً! أنا وكيلي المساعد الذكي. كيف يمكنني مساعدتك اليوم؟</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <span class="console-prompt">$</span>
+                    <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا...">
+                    <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

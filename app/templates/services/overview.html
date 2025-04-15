@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="services-section">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>خدماتنا</h2>
+            <p>حلول ذكية متكاملة للأعمال والمؤسسات</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card animate__animated">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>تطوير وكلاء الذكاء الاصطناعي</h3>
+                <p>نطور وكلاء ذكاء اصطناعي مخصصة تتفهم احتياجات عملك وتتحدث بلغتك ولهجتك بدقة عالية.</p>
+                <ul>
+                    <li>حلول مخصصة حسب احتياجات العمل</li>
+                    <li>أتمتة العمليات والمهام الروتينية</li>
+                    <li>مساعدون أذكياء للعمليات اليومية</li>
+                    <li>سير عمل ذكية ومتكاملة</li>
+                </ul>
+                <a href="{{ url_for('services.ai_agents') }}" class="btn">اقرأ المزيد</a>
+            </div>
+            
+            <div class="service-card animate__animated">
+                <div class="service-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>تحسين نماذج اللغة الكبيرة</h3>
+                <p>خدمات ضبط وتخصيص نماذج اللغة للغة العربية مع دعم كامل للهجات المختلفة والسياقات المحلية.</p>
+                <ul>
+                    <li>دقة تصل إلى 92% في فهم العربية</li>
+                    <li>دعم متعدد اللهجات العربية</li>
+                    <li>تخصيص للصناعات والقطاعات المختلفة</li>
+                    <li>ضبط النموذج لتناسب صوت علامتك التجارية</li>
+                </ul>
+                <a href="{{ url_for('services.llm_tuning') }}" class="btn">اقرأ المزيد</a>
+            </div>
+            
+            <div class="service-card animate__animated">
+                <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>منتجات وكلاء الذكاء الاصطناعي</h3>
+                <p>حلول جاهزة وقابلة للتخصيص لمختلف احتياجات الأعمال، متوفرة فورًا للاستخدام.</p>
+                <ul>
+                    <li>وكيل دعم العملاء</li>
+                    <li>وكيل إدخال البيانات</li>
+                    <li>وكيل مراقبة الامتثال</li>
+                    <li>وكيل تحليل المستندات</li>
+                </ul>
+                <a href="{{ url_for('services.agentic_products') }}" class="btn">اقرأ المزيد</a>
+            </div>
+            
+            <div class="service-card animate__animated">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>تطوير البرمجيات السريع</h3>
+                <p>خدمات تطوير برمجيات متكاملة مدعومة بالذكاء الاصطناعي، من التصميم إلى التنفيذ والدعم.</p>
+                <ul>
+                    <li>تطبيقات مدعومة بالذكاء الاصطناعي</li>
+                    <li>خدمات تكامل الأنظمة</li>
+                    <li>تقنيات حديثة ومتطورة</li>
+                    <li>منهجية تطوير سريعة وفعالة</li>
+                </ul>
+                <a href="{{ url_for('services.software_development') }}" class="btn">اقرأ المزيد</a>
+            </div>
+            
+            <div class="service-card animate__animated">
+                <div class="service-icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <h3>حلول حكومية متقدمة</h3>
+                <p>حلول متخصصة للقطاع الحكومي تركز على تحسين الخدمات وزيادة الكفاءة وتعزيز التحول الرقمي.</p>
+                <ul>
+                    <li>روبوتات خدمة المواطنين</li>
+                    <li>أتمتة العمليات الحكومية</li>
+                    <li>تحليل البيانات للسياسات العامة</li>
+                    <li>حلول امتثال ومراقبة</li>
+                </ul>
+                <a href="{{ url_for('services.government_solutions') }}" class="btn">اقرأ المزيد</a>
+            </div>
+            
+            <div class="service-card animate__animated">
+                <div class="service-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>تحليل البيانات المتقدم</h3>
+                <p>خدمات تحليل بيانات متقدمة تستفيد من قوة الذكاء الاصطناعي وفهم اللغة العربية لاستخراج رؤى قيمة.</p>
+                <ul>
+                    <li>تحليل البيانات الضخمة</li>
+                    <li>تحليل المشاعر باللغة العربية</li>
+                    <li>استخراج رؤى من البيانات غير المهيكلة</li>
+                    <li>لوحات معلومات تفاعلية وتقارير</li>
+                </ul>
+                <a href="{{ url_for('services.data_science') }}" class="btn">اقرأ المزيد</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="process-section">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>منهجية عملنا</h2>
+            <p>نتبع منهجية عمل منظمة ومرنة لضمان تحقيق أفضل النتائج</p>
+        </div>
+        
+        <div class="process-steps">
+            <div class="process-step animate__animated">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>الاستشارة والتحليل</h3>
+                    <p>نستمع إلى احتياجاتك ونحلل متطلبات عملك بدقة لفهم التحديات والفرص.</p>
+                </div>
+            </div>
+            
+            <div class="process-step animate__animated">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>التصميم والتخطيط</h3>
+                    <p>نصمم حلولًا مخصصة ونضع خطة تنفيذ واضحة تتناسب مع أهدافك وميزانيتك.</p>
+                </div>
+            </div>
+            
+            <div class="process-step animate__animated">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>التطوير والتنفيذ</h3>
+                    <p>ننفذ الحل باستخدام أحدث التقنيات ومنهجيات التطوير السريع مع ضمان الجودة.</p>
+                </div>
+            </div>
+            
+            <div class="process-step animate__animated">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>الاختبار والتحسين</h3>
+                    <p>نختبر الحل بشكل شامل ونحسنه بناءً على النتائج والتغذية الراجعة.</p>
+                </div>
+            </div>
+            
+            <div class="process-step animate__animated">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>التدريب والإطلاق</h3>
+                    <p>ندرب فريقك على استخدام الحل بفعالية ونساعدك في إطلاقه بنجاح.</p>
+                </div>
+            </div>
+            
+            <div class="process-step animate__animated">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h3>الدعم المستمر</h3>
+                    <p>نقدم خدمات دعم وصيانة مستمرة لضمان استمرارية أداء الحل بكفاءة عالية.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta">
+    <div class="container">
+        <h2 class="animate__animated">هل أنت جاهز لتحويل أعمالك مع قوة الذكاء الاصطناعي العربي؟</h2>
+        <p class="animate__animated">دعنا نناقش كيف يمكن لحلولنا أن تساعد مؤسستك على النمو والتطور.</p>
+        <a href="{{ url_for('contact.contact') }}" class="btn animate__animated">تواصل معنا اليوم</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<style>
+    .services-section {
+        padding: 4rem 0;
+    }
+    
+    .service-card {
+        margin-bottom: 2rem;
+    }
+    
+    .service-card ul {
+        list-style: disc;
+        padding-right: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    .service-card ul li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .process-section {
+        padding: 4rem 0;
+        background-color: var(--light-bg);
+    }
+    
+    .process-steps {
+        margin-top: 3rem;
+    }
+    
+    .process-step {
+        display: flex;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+    }
+    
+    .process-step:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(94, 53, 177, 0.15);
+    }
+    
+    .step-number {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-left: 1.5rem;
+        flex-shrink: 0;
+    }
+    
+    .step-content h3 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+</style>
+{% endblock %} 

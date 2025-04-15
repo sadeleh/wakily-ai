@@ -1,0 +1,2893 @@
+/* Global Styles */
+:root {
+    --primary: #6a11cb; /* Deeper purple */
+    --primary-light: #8a44e6;
+    --primary-dark: #4a0e9e;
+    --secondary: #2575fc; /* Brighter blue */
+    --secondary-light: #67a8ff;
+    --secondary-dark: #0a58ca;
+    --accent: #ff6f61; /* Coral accent */
+    --text-color: #212529; /* Darker text */
+    --text-light: #6c757d;
+    --white: #ffffff;
+    --light-bg: #f8f9fa; /* Lighter gray */
+    --dark-bg: #1a1a2e; /* Deep navy for dark sections */
+    --border-radius: 12px; /* Slightly larger radius */
+    --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Softer shadow */
+    --box-shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.12);
+    --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Kufi Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Improved font stack */
+    color: var(--text-color);
+    line-height: 1.7; /* Increased line height */
+    background-color: var(--white);
+    direction: rtl;
+    -webkit-font-smoothing: antialiased; /* Smoother fonts */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    width: 90%;
+    max-width: 1280px; /* Wider max width */
+    margin: 0 auto;
+    padding: 0 15px; /* Add padding for safety */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: none; /* Remove underline on hover */
+}
+
+ul {
+    list-style: none;
+    padding-left: 0; /* Reset padding */
+}
+
+img {
+    max-width: 100%;
+    height: auto; /* Ensure responsiveness */
+    vertical-align: middle; /* Fix potential spacing issues */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+    font-weight: 700; /* Bolder headings */
+    color: var(--primary-dark);
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.4rem; }
+h3 { font-size: 1.8rem; }
+
+p {
+    margin-bottom: 1.2rem;
+    color: var(--text-light);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem; /* Larger padding */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background-size: 200% 100%; /* For gradient shift effect */
+    color: var(--white);
+    border: none;
+    border-radius: 30px; /* More rounded */
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition), background-position 0.5s ease; /* Add background transition */
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative; /* Needed for potential pseudo-elements */
+    overflow: hidden; /* Clip effects */
+}
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.02); /* Enhanced hover effect */
+    box-shadow: 0 10px 25px rgba(106, 17, 203, 0.3);
+    color: var(--white);
+    background-position: -100% 0; /* Shift gradient on hover */
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    box-shadow: none;
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 6px 20px rgba(106, 17, 203, 0.2);
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(13, 17, 23, 0.8); /* Dark background */
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.0);
+    position: fixed; /* Fixed on desktop */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: backdrop-filter 0.4s ease, box-shadow 0.4s ease; /* Removed background-color transition */
+}
+
+/* Scrolled Header State */
+header.scrolled {
+    background-color: rgba(13, 17, 23, 0.9); /* Keep dark, just slightly less transparent */
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Darker shadow */
+}
+
+.main-nav {
+    padding: 1.5rem 0;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+}
+
+.main-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo {
+    width: 160px; /* Slightly larger logo */
+    transition: transform 0.3s ease;
+}
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    position: relative;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    padding: 0.5rem 0;
+    white-space: nowrap;
+}
+
+.nav-links a.active, .nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px; /* Thicker underline */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    transition: width 0.4s ease; /* Smoother transition */
+    border-radius: 2px;
+}
+
+.nav-links a.active::after, .nav-links a:hover::after {
+    width: 100%;
+}
+
+.language-switcher .lang-btn {
+    background: transparent;
+    border: 1px solid var(--primary-light);
+    color: var(--primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.language-switcher .lang-btn:hover {
+    background-color: var(--primary-light);
+    color: var(--white);
+    border-color: var(--primary-light);
+}
+
+/* Main Content Styles */
+main {
+    margin-top: 90px; /* Default margin for fixed header on desktop */
+    min-height: calc(100vh - 400px);
+    position: relative;
+}
+
+/* Hero Section - Phase 2: Content Styling */
+.hero {
+    /* Using a more complex gradient + subtle pattern */
+    background-color: #e0e7ff; /* Fallback */
+    background-image:
+        radial-gradient(at 0% 0%, hsla(253, 100%, 95%, 0.8) 0px, transparent 50%),
+        radial-gradient(at 98% 1%, hsla(220, 100%, 95%, 0.8) 0px, transparent 50%),
+        linear-gradient(180deg, var(--white), var(--light-bg)); /* Add a base gradient */
+    padding: 8rem 0 10rem; /* Increased padding */
+    position: relative;
+    overflow: hidden; /* Keep overflow hidden */
+    text-align: center; /* Center content by default */
+}
+
+/* Particles Styling */
+#particles-js, 
+#particles-container,
+#terminal-particles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Behind hero content */
+    opacity: 0.6; /* Make particles less prominent */
+    pointer-events: none; /* Allow clicks through to content */
+}
+
+#particles-container canvas,
+#terminal-particles-container canvas,
+#particles-js canvas {
+    display: block;
+    vertical-align: bottom;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#particles-js dotlottie-player {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-container {
+    position: relative; /* For z-index stacking */
+    z-index: 2;
+    display: flex; /* Will adjust this based on final design */
+    flex-direction: column; /* Start as column for mobile */
+    align-items: center;
+    gap: 3rem;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 800px; /* Wider content area */
+}
+
+.hero-headline {
+    font-size: 3.8rem; /* Even larger H1 */
+    margin-bottom: 1.5rem;
+    line-height: 1.3; /* Adjust line height */
+    color: var(--primary-dark);
+    font-weight: 800; /* Extra bold */
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); /* Subtle text shadow */
+}
+
+.hero-headline .highlight {
+    /* Apply a gradient clip effect */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block; /* Needed for background clip */
+}
+
+.hero-subheadline {
+    font-size: 1.3rem; /* Slightly larger paragraph */
+    margin-bottom: 3rem; /* Increased margin */
+    color: var(--text-light);
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8; /* Better readability */
+}
+
+/* Styles for the re-introduced hero visual */
+.hero-visual {
+    flex-basis: 45%; /* Control size relative to content */
+    max-width: 550px;
+    margin-top: 2rem; /* Add some space */
+    position: relative; /* For potential pseudo-elements */
+    z-index: 2;
+}
+
+.hero-visual img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(106, 17, 203, 0.2));
+    transition: transform 0.4s ease;
+}
+
+.hero-visual:hover img {
+    transform: scale(1.03);
+}
+
+/* Adjust hero container for visual */
+@media (min-width: 992px) {
+    .hero-container {
+        flex-direction: row; /* Side-by-side on larger screens */
+        text-align: right; /* Align text to the right (for RTL) */
+        gap: 4rem;
+    }
+    .hero-content {
+        flex-basis: 55%;
+        max-width: none; /* Remove max width for flex */
+    }
+    .hero-subheadline {
+        margin-right: 0; /* Align text to right */
+        margin-left: auto;
+        max-width: none;
+    }
+    .cta-buttons {
+        justify-content: flex-end; /* Align buttons to right */
+    }
+    .hero-visual {
+        margin-top: 0;
+    }
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Custom Hero Buttons */
+.btn-primary-hero {
+    /* Inherit from .btn but make it slightly larger */
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+}
+
+.btn-secondary-hero {
+    /* Inherit from .btn-outline */
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.2); /* Subtle background */
+    border-color: var(--primary-light);
+    color: var(--primary-dark);
+    backdrop-filter: blur(5px);
+    box-shadow: none;
+}
+
+.btn-secondary-hero:hover {
+    background: var(--primary-light);
+    color: var(--white);
+    border-color: var(--primary-light);
+    box-shadow: 0 6px 20px rgba(106, 17, 203, 0.2);
+}
+
+
+/* Section dividers - Enhanced */
+.section-divider {
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -1px; /* Ensure overlap */
+}
+
+.section-divider::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -5%; /* Extend past edges */
+    width: 110%;
+    height: 200px; /* Tall enough for curve */
+    background-color: var(--light-bg); /* Color of the section below */
+    border-radius: 50% 50% 0 0 / 100px 100px 0 0; /* Curved top */
+}
+
+/* Services Section - Adjust top padding if needed due to divider */
+.services {
+    padding: 8rem 0 6rem; /* Adjusted top padding */
+    background-color: var(--light-bg);
+    position: relative; /* Needed for z-index if using overlays */
+    z-index: 1;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(248, 249, 250, 0) 50%);
+    opacity: 0.5;
+    z-index: -1; /* Place behind content */
+    pointer-events: none;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    position: relative;
+}
+
+.section-header h2 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    font-family: 'Fira Code', monospace;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Further down */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; /* Wider line */
+    height: 4px; /* Thicker line */
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+    border-radius: 2px;
+}
+
+.section-header p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Larger min width */
+    gap: 2.5rem; /* Increased gap */
+}
+
+.service-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 2.5rem; /* Increased padding */
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.05); /* Subtle border */
+    position: relative; /* For card overlay */
+}
+
+.service-card:hover {
+    transform: translateY(-12px) scale(1.02); /* Add subtle scale */
+    box-shadow: var(--box-shadow-hover);
+    border-color: rgba(106, 17, 203, 0.1); /* Highlight border */
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 2rem; /* Increased margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(106, 17, 203, 0.1) 0%, rgba(37, 117, 252, 0.1) 100%);
+    border-radius: 50%;
+    position: relative; /* For potential icon effects */
+    transition: var(--transition);
+}
+
+.service-card:hover .service-icon {
+    background: linear-gradient(135deg, rgba(106, 17, 203, 0.15) 0%, rgba(37, 117, 252, 0.15) 100%);
+    transform: scale(1.05); /* Scale icon on card hover */
+}
+
+.service-icon i {
+    font-size: 2.5rem; /* Larger icon */
+    background: -webkit-linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: var(--transition);
+}
+
+.service-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+    font-size: 1.4rem; /* Larger card title */
+}
+
+.service-card p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.service-card .btn {
+    padding: 0.8rem 1.8rem; /* Slightly smaller button inside card */
+    font-size: 0.9rem;
+}
+
+/* Card Overlay */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    direction: rtl;
+}
+
+.service-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.card-overlay h3 {
+    color: var(--white);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.card-overlay p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-overlay .btn {
+    background: var(--white);
+    color: var(--primary);
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-overlay .btn:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Why Wakily Section */
+.why-us {
+    padding: 6rem 0;
+    background-color: var(--white); /* White background */
+    position: relative;
+    overflow: hidden; /* Contain pattern */
+}
+
+.why-us::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path fill="%23f1f3f5" d="M0 0h20v20H0zM20 20h20v20H20z"/></svg>'); /* Subtle dot/square pattern */
+    background-repeat: repeat;
+    opacity: 0.2;
+    z-index: 0; /* Behind content */
+}
+
+.why-us .container {
+    position: relative; /* Ensure content is above pseudo-element */
+    z-index: 1;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min width */
+    gap: 2rem;
+}
+
+.feature-card {
+    padding: 2rem; /* Increased padding */
+    border-radius: var(--border-radius);
+    background-color: rgba(248, 249, 250, 0.8); /* Slightly transparent card */
+    backdrop-filter: blur(5px);
+    box-shadow: none; /* Remove shadow, rely on background contrast */
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px) scale(1.01); /* Add subtle scale */
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    border-color: transparent; /* Hide border on hover */
+}
+
+.feature-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* Increased gap */
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+    font-size: 1.3rem;
+}
+
+.feature-card i {
+    color: var(--secondary);
+    font-size: 1.5rem; /* Larger icon */
+    transition: var(--transition);
+    background-color: rgba(37, 117, 252, 0.1);
+    padding: 10px;
+    border-radius: 50%;
+    width: 45px; /* Ensure circular shape */
+    height: 45px;
+    display: inline-flex; /* Use flex for centering */
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-card:hover i {
+    transform: rotate(-15deg) scale(1.1); /* Add icon animation on card hover */
+    background-color: rgba(37, 117, 252, 0.2);
+}
+
+.feature-card p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+
+/* Call to Action Section */
+.cta {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+    background-blend-mode: overlay;
+    background-size: cover;
+    padding: 6rem 0;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+}
+
+.cta::before { /* Overlay */
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(74, 14, 158, 0.7); /* Darker overlay */
+    z-index: 1;
+}
+
+.cta .container {
+    position: relative;
+    z-index: 2;
+}
+
+
+.cta h2 {
+    font-size: 2.6rem; /* Larger CTA header */
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.cta p {
+    margin-bottom: 2.5rem; /* Increased margin */
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.cta .btn {
+    background: var(--white);
+    color: var(--primary);
+    padding: 1rem 2.8rem; /* Larger CTA button */
+    font-size: 1.1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta .btn:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--dark-bg); /* Dark background */
+    color: rgba(255, 255, 255, 0.7); /* Lighter text on dark */
+    padding: 5rem 0 2rem;
+    margin-top: 4rem; /* Add some space before footer */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust columns */
+    gap: 3rem; /* Increased gap */
+    margin-bottom: 3rem;
+}
+
+.footer-section h3 {
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Adjusted position */
+    right: 0;
+    width: 50px; /* Wider line */
+    height: 3px; /* Thicker line */
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+    border-radius: 2px;
+}
+
+.footer-section ul li {
+    margin-bottom: 1rem; /* Increased spacing */
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--white);
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2.5rem; /* Increased padding */
+    margin-top: 2rem; /* Space above bottom text */
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* More visible border */
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* Contact Form Styles - Basic Refinements */
+.contact-section {
+    padding: 6rem 0;
+    background-color: var(--light-bg);
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Wider min width */
+    gap: 4rem; /* Increased gap */
+}
+
+.contact-form {
+    background-color: var(--white);
+    padding: 3rem; /* Increased padding */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.form-group {
+    margin-bottom: 1.8rem; /* Increased margin */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600; /* Bolder labels */
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem; /* Increased padding */
+    border: 1px solid #ced4da; /* Standard border color */
+    border-radius: 8px; /* Slightly less round */
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.15); /* Adjusted focus shadow */
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px; /* Taller textarea */
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Increased gap */
+}
+
+.contact-info-item {
+    display: flex;
+    gap: 1.2rem; /* Increased gap */
+    align-items: center;
+}
+
+.contact-info-item i {
+    color: var(--primary);
+    font-size: 1.5rem; /* Larger icon */
+    width: 30px; /* Fixed width for alignment */
+    text-align: center;
+}
+.contact-info-item p {
+    margin-bottom: 0; /* Remove margin from paragraph inside */
+    color: var(--text-light);
+}
+
+/* Flash Messages */
+.flash-messages {
+    margin-bottom: 2rem;
+    position: fixed; /* Make them fixed */
+    top: 100px; /* Below header */
+    right: 20px;
+    width: auto; /* Auto width */
+    max-width: 400px;
+    z-index: 1050;
+}
+
+.flash-message {
+    padding: 1.2rem 1.5rem; /* Increased padding */
+    margin-bottom: 1rem; /* Increased margin */
+    border-radius: 8px;
+    border: 1px solid transparent;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.flash-message::before { /* Add icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.flash-message.success {
+    background-color: #e6f9f0;
+    color: #1b6e43;
+    border-color: #a3e9c6;
+}
+.flash-message.success::before { content: '\f058'; color: #2f9e63; } /* Checkmark */
+
+.flash-message.error {
+    background-color: #fdecea;
+    color: #a51e2c;
+    border-color: #f9c0c5;
+}
+.flash-message.error::before { content: '\f071'; color: #d93042; } /* Warning */
+
+
+/* About Page Styles - Basic Refinements */
+.about-section {
+    padding: 6rem 0;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Give more space to content */
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image {
+    text-align: center;
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Clip image to border radius */
+    box-shadow: var(--box-shadow);
+}
+.about-image img {
+    display: block; /* Remove bottom space */
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-content h2 {
+    color: var(--primary);
+    font-size: 2.6rem; /* Larger header */
+}
+.about-content p {
+    font-size: 1.1rem;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+    .container { width: 95%; }
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    h3 { font-size: 1.7rem; }
+    .hero h1 { font-size: 3rem; }
+}
+
+@media screen and (max-width: 992px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.6rem; }
+    .hero h1 { font-size: 2.6rem; }
+    .hero p { font-size: 1.15rem; }
+    .hero { padding: 6rem 0 8rem; }
+
+    .main-nav .container { flex-direction: column; gap: 1.5rem; }
+    .nav-links { justify-content: center; margin-top: 1rem; gap: 2rem; }
+
+    .about-container { grid-template-columns: 1fr; gap: 3rem; }
+    .about-image { order: -1; max-width: 500px; margin: 0 auto; } /* Move image to top */
+}
+
+@media screen and (max-width: 768px) {
+    /* Header becomes hidden */
+    header, header.code-header {
+        display: none !important; /* Hide header completely */
+    }
+    main { 
+        margin-top: 0 !important; /* Remove margin needed for fixed header */
+    }
+
+    /* Hide specific code blocks on mobile */
+    .code-block.mobile-hide {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Ensure all children of mobile-hide blocks are also hidden */
+    .code-block.mobile-hide * {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Specific selector for the language-models.js code header */
+    .code-header:has(.file-name[data-filename="language-models.js"]),
+    .code-header .file-name[data-filename="language-models.js"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    h1 { font-size: 2rem; } /* Adjust h1 for smaller screens */
+    h2 { font-size: 1.8rem; } /* Adjust h2 for smaller screens */
+    
+    .code-grid,
+    .features-grid,
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .terminal-container {
+        max-width: 100%;
+    }
+    
+    .terminal-body {
+        height: 300px;
+    }
+    
+    .code-block {
+        height: auto;
+    }
+    
+    .code-block pre {
+        max-height: 250px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .chat-toggle {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .chat-container.terminal-window {
+        width: 300px;
+        right: 0;
+    }
+    
+    /* Fix for terminal CTA in mobile view */
+    .terminal-cta {
+        padding-top: 4rem !important; /* Reset to a reasonable padding */
+        margin-top: 4rem !important; /* Reset to a reasonable margin */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin-top: 2rem; /* Standard margin */
+    }
+
+    /* Ensure language-models.js code block is completely hidden */
+    .code-header .file-name[data-filename="language-models.js"],
+    .code-header .file-name[data-filename="language-models.js"] ~ * {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Ensure header remains hidden */
+    header, header.code-header {
+        display: none !important;
+    }
+    main { 
+        margin-top: 0 !important; 
+    }
+
+    /* Ensure specific code blocks remain hidden */
+    .code-block.mobile-hide {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    body { font-size: 14px; }
+    .container { width: 95%; padding: 0 10px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.4rem; }
+    .hero h1 { font-size: 1.8rem; }
+    .hero p { font-size: 1rem; }
+    .hero { padding: 4rem 0 6rem; }
+    .btn { padding: 0.8rem 1.8rem; font-size: 0.9rem; }
+    .cta h2 { font-size: 2rem; }
+    .cta p { font-size: 1rem; }
+
+    .nav-links { 
+        gap: 1.5rem; /* Revert gap */
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 1rem; /* Revert font size */
+    }
+
+    .chat-widget { right: 15px; bottom: 15px; }
+    .chat-toggle { width: 80px; height: 80px; }
+    .chat-toggle dotlottie-player { width: 80px !important; height: 80px !important; }
+    .chat-container { width: calc(100vw - 30px); right: -15px; bottom: 90px; }
+    
+    /* Reset terminal section spacing */
+    .terminal-cta,
+    #terminal-cta-section {
+        margin-top: 3rem !important; /* Reset margin */
+        padding-top: 3rem !important; /* Reset padding */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin: 2rem auto !important;
+        max-height: 600px;
+    }
+}
+
+/* Animations (Hero background - keep simple for now) */
+#particles-js, #particles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Behind hero content */
+    opacity: 0.6; /* Make Lottie less prominent */
+    pointer-events: none; /* Allow clicks through to content */
+}
+
+#particles-container canvas,
+#terminal-particles-container canvas {
+    display: block;
+    vertical-align: bottom;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Chat Widget Styles (Adjusted) */
+.chat-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1010; /* Ensure above most content */
+    font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+/* ... Rest of chat widget styles remain largely the same, ensure they inherit new variables ... */
+
+.chat-toggle {
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50%;
+    width: 100px; /* Larger toggle button */
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 6px 15px rgba(0, 102, 255, 0.3));
+}
+
+.chat-toggle dotlottie-player {
+    width: 100px !important;
+    height: 100px !important;
+}
+
+.chat-toggle:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 8px 20px rgba(106, 17, 203, 0.4));
+}
+
+.chat-container {
+    position: absolute;
+    bottom: 90px;
+    right: 0;
+    width: 420px; /* Increased from 350px */
+    max-height: 600px; /* Increased max height */
+    background-color: var(--terminal-bg);
+    display: none;
+}
+
+.chat-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--white);
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white); /* Ensure white */
+}
+
+.chat-header button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent icon */
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s ease;
+}
+
+.chat-header button:hover {
+    transform: scale(1.1);
+    color: var(--white); /* Fully white on hover */
+}
+
+.chat-body {
+    height: 450px; /* Increased from 350px */
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.chat-messages::-webkit-scrollbar { /* Style scrollbar */
+    width: 6px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+.chat-messages::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.message {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start; /* Align icon to top */
+    gap: 10px; /* Space between icon and bubble */
+}
+
+.message dotlottie-player { /* Ensure size for messages */
+    width: 60px !important;
+    height: 60px !important;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.message.bot {
+    justify-content: flex-start;
+}
+
+.message.user {
+    justify-content: flex-end;
+    flex-direction: row-reverse; /* Keep reversing */
+}
+
+.message-content {
+    background-color: rgba(230, 230, 240, 0.9); /* Slightly different color */
+    padding: 12px 18px; /* Adjusted padding */
+    border-radius: 18px;
+    max-width: calc(100% - 70px); /* Account for icon width + gap */
+    word-wrap: break-word;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    line-height: 1.5; /* Ensure good readability */
+}
+
+.message.user .message-content {
+    background-color: rgba(106, 17, 203, 0.1); /* Use primary color */
+    color: var(--primary-dark);
+}
+
+.chat-input {
+    display: flex;
+    padding: 15px 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent input area */
+    align-items: center; /* Vertically align input and button */
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid rgba(106, 17, 203, 0.2); /* Use primary color */
+    border-radius: 25px;
+    margin-right: 12px;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 1rem; /* Match body font size */
+    background-color: var(--white); /* Solid white input */
+    transition: all 0.3s ease;
+    color: var(--text-color);
+}
+
+.chat-input input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.15);
+}
+
+.chat-input button {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--white);
+    border: none;
+    width: 48px; /* Slightly larger button */
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(106, 17, 203, 0.25);
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.chat-input button i {
+    font-size: 1.2rem; /* Adjust icon size if needed */
+}
+
+.chat-input button:hover {
+    transform: scale(1.08); /* Slightly more pop */
+    box-shadow: 0 6px 15px rgba(106, 17, 203, 0.35);
+}
+
+/* Animation Support */
+.visibility-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.visibility-visible {
+    opacity: 1;
+    visibility: visible;
+    /* Ensure transition happens smoothly */
+    transition: opacity 0.5s ease;
+}
+
+/* Add delays via JS, but set base duration */
+.animate__animated {
+    animation-duration: 0.8s; /* Default animation speed */
+}
+
+/* Code Theme - Dark Mode */
+:root {
+    /* Base Colors */
+    --background: #0d1117;
+    --surface: #161b22;
+    --surface-lighter: #21262d;
+    --text-primary: #f0f6fc;
+    --text-secondary: #c9d1d9;
+    --text-muted: #8b949e;
+    
+    /* Syntax Colors */
+    --comment: #8b949e;
+    --keyword: #ff7b72;
+    --string: #a5d6ff;
+    --number: #79c0ff;
+    --function: #d2a8ff;
+    --variable: #ffa657;
+    --tag: #7ee787;
+    --attribute: #79c0ff;
+    --error: #f85149;
+    --success: #56d364;
+    
+    /* UI Elements */
+    --primary: #238636;
+    --primary-hover: #2ea043;
+    --secondary: #6e40c9;
+    --accent: #0066ff;
+    --border: #30363d;
+    --divider: #21262d;
+    
+    /* Shadows and Effects */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
+    --glow: 0 0 10px rgba(79, 209, 197, 0.3);
+    
+    /* Terminal Colors */
+    --terminal-bg: #121212;
+    --terminal-header: #1e1e1e;
+    --terminal-text: #e0e0e0;
+}
+
+/* Base & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Kufi Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.7;
+    background-color: var(--background);
+    direction: rtl;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+body.code-theme {
+    font-family: "Noto Kufi Arabic", "Fira Code", monospace;
+}
+
+.container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.4rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1.2rem;
+    color: var(--text-secondary);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+/* Matrix Background */
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.05;
+    pointer-events: none;
+    background-color: var(--background);
+}
+
+/* Header */
+.code-header {
+    background-color: rgba(13, 17, 23, 0.8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    position: fixed; /* Fixed on desktop */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.4s ease;
+}
+
+.main-nav {
+    padding: 1.5rem 0;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+}
+
+.main-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.code-tag {
+    color: var(--tag);
+}
+
+.function-text {
+    color: var(--function);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    position: relative;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    padding: 0.5rem 0;
+    white-space: nowrap;
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+    right: auto;
+    left: 0;
+}
+
+.terminal-btn {
+    background-color: var(--surface);
+    color: var(--accent);
+    border: 1px solid var(--border);
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.terminal-btn:hover {
+    background-color: var(--surface-lighter);
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+/* Hero Section */
+.hero-code {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--background); /* Ensure hero has a background */
+}
+
+#particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* Add a fallback background to visualize the container */
+    /* background-color: rgba(0, 255, 0, 0.1);  */
+    opacity: 0.6; /* Adjust opacity as needed */
+    pointer-events: none; /* Allow clicks through to content */
+}
+
+#particles-container canvas {
+    display: block;
+    vertical-align: bottom;
+    /* Maybe set opacity directly on canvas if needed */
+    /* opacity: 1; */
+}
+
+.hero-code .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    z-index: 2;
+}
+
+@media (min-width: 992px) {
+    .hero-code .container {
+        flex-direction: row;
+        text-align: right;
+        gap: 3rem;
+    }
+}
+
+/* Terminal Styling */
+.terminal-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: var(--terminal-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border);
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--terminal-header);
+    border-bottom: 1px solid var(--border);
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+    margin-right: 15px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.terminal-button.close {
+    background-color: #ff5f56;
+}
+
+.terminal-button.minimize {
+    background-color: #ffbd2e;
+}
+
+.terminal-button.maximize {
+    background-color: #27c93f;
+}
+
+.terminal-title {
+    flex-grow: 1;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.terminal-body {
+    padding: 15px;
+    height: 350px;
+    overflow-y: auto;
+}
+
+.terminal-content {
+    font-family: 'Fira Code', monospace;
+    color: var(--terminal-text);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    direction: ltr;
+    text-align: left;
+}
+
+.terminal-line {
+    display: flex;
+    margin-bottom: 0.5rem;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.console-prompt {
+    color: var(--success);
+    margin-right: 8px;
+    font-weight: 500;
+}
+
+.console-symbol {
+    color: var(--primary);
+    margin-right: 8px;
+    font-weight: 700;
+}
+
+.typing-effect {
+    white-space: pre;
+    word-break: keep-all;
+    overflow-x: hidden;
+    font-family: 'Fira Code', monospace;
+}
+
+.blinking-cursor {
+    animation: blink 1s infinite;
+    color: var(--text-primary);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.terminal-output {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.terminal-output-large {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    font-size: 1.2rem;
+    color: var(--primary);
+    text-align: center;
+    white-space: normal;
+    line-height: 1.5;
+    max-width: 100%;
+}
+
+.output-line {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    max-width: 100%;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.output-line.success {
+    color: var(--success);
+}
+
+.loading-bar {
+    height: 8px;
+    background-color: var(--surface-lighter);
+    border-radius: 4px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 3s cubic-bezier(0.1, 0.5, 0.2, 1);
+}
+
+/* Hero Content */
+.hero-content {
+    flex: 1;
+    text-align: center;
+}
+
+.glitch-text {
+    position: relative;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+    margin-bottom: 1.5rem;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch-text::before {
+    color: var(--accent);
+    z-index: -1;
+    animation: glitch-animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    animation-delay: 0.1s;
+}
+
+.glitch-text::after {
+    color: var(--primary);
+    z-index: -2;
+    animation: glitch-animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+    animation-delay: 0.2s;
+}
+
+@keyframes glitch-animation {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-3px, 3px);
+    }
+    40% {
+        transform: translate(-3px, -3px);
+    }
+    60% {
+        transform: translate(3px, 3px);
+    }
+    80% {
+        transform: translate(3px, -3px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.highlight-rate {
+    color: var(--success);
+    font-weight: 700;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: var(--shadow);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--text-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--surface-lighter);
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Code Blocks and Features */
+.code-feature-section {
+    padding: 3rem 0 5rem;
+    background-color: var(--background);
+    position: relative;
+    margin-top: 0;
+    overflow: hidden;
+}
+
+.code-feature-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23112240' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23112240'%3E%3Ccircle cx='769' cy='229' r='8'/%3E%3Ccircle cx='539' cy='269' r='8'/%3E%3Ccircle cx='603' cy='493' r='8'/%3E%3Ccircle cx='731' cy='737' r='8'/%3E%3Ccircle cx='520' cy='660' r='8'/%3E%3Ccircle cx='309' cy='538' r='8'/%3E%3Ccircle cx='295' cy='764' r='8'/%3E%3Ccircle cx='40' cy='599' r='8'/%3E%3Ccircle cx='102' cy='382' r='8'/%3E%3Ccircle cx='127' cy='80' r='8'/%3E%3Ccircle cx='370' cy='105' r='8'/%3E%3Ccircle cx='578' cy='42' r='8'/%3E%3Ccircle cx='237' cy='261' r='8'/%3E%3Ccircle cx='390' cy='382' r='8'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.05;
+    z-index: 0;
+    filter: blur(2px);
+}
+
+.code-feature-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    position: relative;
+}
+
+.section-header h2 {
+    display: inline-block;
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-family: 'Fira Code', monospace;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Further down */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; /* Wider line */
+    height: 4px; /* Thicker line */
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+    border-radius: 2px;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.code-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.code-block {
+    background-color: var(--background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    position: relative;
+    /* height: 350px; REMOVED - Let content dictate height */
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.code-block:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent);
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.file-name {
+    font-family: 'Fira Code', monospace;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.code-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.code-icons i {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.code-block pre {
+    margin: 0;
+    height: calc(100% - 40px);
+    overflow: auto;
+}
+
+.code-block code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding: 1rem;
+    display: block;
+    height: 100%;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    direction: rtl;
+}
+
+.code-block:hover .card-overlay {
+    opacity: 1;
+}
+
+.card-overlay h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.card-overlay p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.code-link {
+    font-family: 'Fira Code', monospace;
+    color: var(--function);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.code-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* Stats Section */
+.stats-section {
+    padding: 5rem 0;
+    background-color: var(--background);
+    position: relative;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--surface);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-family: 'Fira Code', monospace;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.stat-bar {
+    height: 6px;
+    background-color: var(--surface-lighter);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.stat-progress {
+    height: 100%;
+    width: 0;
+    transition: width 1.5s ease-out;
+}
+
+.p50 { width: 50%; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+.p92 { width: 92%; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+.p100 { width: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+
+/* Feature Cards */
+.why-section {
+    padding: 6rem 0;
+    background-color: var(--surface);
+    position: relative;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: var(--background);
+    border-radius: 8px;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+    background-color: var(--text-primary);
+}
+
+.feature-card h3 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.code-string {
+    color: var(--string);
+}
+
+.code-variable {
+    color: var(--variable);
+}
+
+.code-success {
+    color: var(--success);
+}
+
+/* Chat Widget */
+.chat-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1010;
+    font-family: 'Noto Kufi Arabic', 'Fira Code', monospace;
+}
+
+.chat-toggle {
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 6px 15px rgba(0, 102, 255, 0.3));
+}
+
+.chat-toggle:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 8px 20px rgba(0, 102, 255, 0.4));
+}
+
+.chat-container.terminal-window {
+    position: absolute;
+    bottom: 90px;
+    right: 0;
+    width: 420px; /* Increased from 350px */
+    max-height: 600px; /* Increased max height */
+    background-color: var(--terminal-bg);
+    display: none;
+}
+
+.chat-header.terminal-header {
+    justify-content: space-between;
+}
+
+.chat-body.terminal-body {
+    height: 450px; /* Increased from 350px */
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+}
+
+.message.bot {
+    justify-content: flex-start;
+}
+
+.message.user {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-content {
+    background-color: var(--surface);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    max-width: 80%;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.message.user .message-content {
+    background-color: var(--primary);
+    color: var(--text-primary);
+}
+
+.typing-text::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+.chat-input {
+    display: flex;
+    padding: 1rem;
+    border-top: 1px solid var(--border);
+    background-color: var(--terminal-bg);
+    align-items: center;
+}
+
+.chat-input input {
+    flex: 1;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.8rem;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+
+.chat-input input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.chat-input button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    border: none;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chat-input button:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.1);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 992px) {
+    /* Keep header fixed on larger screens */
+    header.code-header {
+        position: fixed !important;
+    }
+    main {
+         margin-top: 90px !important; /* Ensure margin for fixed header */
+    }
+    /* Adjustments for medium screens */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.3rem; }
+    
+    .main-nav .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-links {
+        margin: 1rem 0;
+        justify-content: center;
+    }
+    
+    .glitch-text {
+        font-size: 2.4rem;
+    }
+    
+    /* Adjustments for terminal cta on medium screens (avoiding extreme values) */
+    .terminal-cta {
+        padding-top: 6rem !important;
+        margin-top: 4rem !important;
+    }
+    
+    .terminal-cta .container {
+        padding-top: 1rem !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Header becomes relative */
+    header, header.code-header {
+        position: relative !important;
+        top: auto !important; 
+        width: auto;
+        z-index: auto;
+        background-color: var(--background); /* Default background */
+    }
+    main { 
+        margin-top: 0 !important; /* Remove margin needed for fixed header */
+    }
+
+    h1 { font-size: 2rem; } /* Adjust h1 for smaller screens */
+    h2 { font-size: 1.8rem; } /* Adjust h2 for smaller screens */
+    
+    .code-grid,
+    .features-grid,
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .terminal-container {
+        max-width: 100%;
+    }
+    
+    .terminal-body {
+        height: 300px;
+    }
+    
+    .code-block {
+        height: auto;
+    }
+    
+    .code-block pre {
+        max-height: 250px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .chat-toggle {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .chat-container.terminal-window {
+        width: 300px;
+        right: 0;
+    }
+    
+    /* Fix for terminal CTA in mobile view */
+    .terminal-cta {
+        padding-top: 8rem; /* More top padding to avoid header overlap */
+    }
+    
+    main {
+        margin-top: 100px; /* Increased to prevent content from being hidden under fixed header */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin-top: 2rem; /* Add space above the terminal window */
+    }
+
+    /* Ensure language-models.js code block is completely hidden */
+    .code-header .file-name[data-filename="language-models.js"],
+    .code-header .file-name[data-filename="language-models.js"] ~ * {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body { font-size: 14px; }
+    .container { width: 95%; padding: 0 10px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.4rem; }
+    .hero h1 { font-size: 1.8rem; }
+    .hero p { font-size: 1rem; }
+    .hero { padding: 4rem 0 6rem; }
+    .btn { padding: 0.8rem 1.8rem; font-size: 0.9rem; }
+    .cta h2 { font-size: 2rem; }
+    .cta p { font-size: 1rem; }
+
+    .nav-links { 
+        gap: 1.5rem; /* Revert gap */
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 1rem; /* Revert font size */
+    }
+
+    .chat-widget { right: 15px; bottom: 15px; }
+    .chat-toggle { width: 80px; height: 80px; }
+    .chat-toggle dotlottie-player { width: 80px !important; height: 80px !important; }
+    .chat-container { width: calc(100vw - 30px); right: -15px; bottom: 90px; }
+    
+    /* Extra fixes for smaller screens */
+    .terminal-cta {
+        padding-top: 10rem; /* Even more top padding for very small screens */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin-top: 3rem; /* More space on smallest screens */
+        max-height: 600px; /* Ensure maximum height */
+    }
+}
+
+/* Fix for terminal CTA in mobile view */
+.terminal-cta {
+    position: relative; 
+    background-color: #0d1117; 
+    padding: 6rem 0; /* Increased base padding */
+    overflow: hidden;
+    margin-top: 2rem; /* Add extra margin from previous section */
+}
+
+@media screen and (max-width: 768px) {
+    /* Fix for terminal CTA in mobile view */
+    .terminal-cta {
+        padding-top: 12rem; /* Significantly more top padding to avoid header overlap */
+        margin-top: 4rem; /* More margin from previous section */
+    }
+    
+    main {
+        margin-top: 110px; /* Increased to prevent content from being hidden under fixed header */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin-top: 2.5rem; /* More space above the terminal window */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Extra fixes for smaller screens */
+    .terminal-cta {
+        padding-top: 14rem; /* Much more top padding for very small screens */
+        margin-top: 5rem; /* Extra margin from previous section */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin-top: 3.5rem; /* More space on smallest screens */
+        max-height: 600px; /* Ensure maximum height */
+    }
+}
+
+/* Fix for terminal CTA in mobile view */
+.terminal-cta {
+    position: relative; 
+    background-color: #0d1117; 
+    padding: 8rem 0; /* Increased base padding */
+    overflow: hidden;
+    margin-top: 3rem; /* Add extra margin from previous section */
+}
+
+@media screen and (max-width: 992px) {
+    /* Fix for terminal CTA in mobile view */
+    .terminal-cta {
+        padding-top: 16rem; /* Extremely generous top padding */
+        margin-top: 5rem; /* More margin from previous section */
+    }
+    
+    .terminal-cta .container {
+        padding-top: 3rem; /* Add padding to the container too */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin-top: 3rem; /* More space above the terminal window */
+    }
+    
+    /* Increase header spacing impact */
+    main {
+        margin-top: 130px; /* Significantly increased to prevent content from being hidden */
+    }
+    
+    /* Ensure header doesn't overlap */
+    header.code-header {
+        height: auto;
+        min-height: 80px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Fix for terminal CTA in mobile view */
+    .terminal-cta {
+        padding-top: 18rem; /* Extremely generous top padding */
+        margin-top: 6rem; /* Even more margin from previous section */
+    }
+    
+    .terminal-cta .container {
+        padding-top: 4rem; /* Add even more padding to the container */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin-top: 4rem; /* Much more space above the terminal window */
+    }
+    
+    /* Increase spacing from header */
+    main {
+        margin-top: 150px; /* Greatly increased to prevent content from being hidden */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Extra fixes for smaller screens */
+    .terminal-cta {
+        padding-top: 22rem; /* Excessive top padding for very small screens */
+        margin-top: 8rem; /* Extra margin from previous section */
+    }
+    
+    .terminal-cta .container {
+        padding-top: 5rem; /* Even more padding to the container */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin-top: 10rem; /* Maximum terminal window margin */
+    }
+    
+    /* Absolute maximum spacing from header */
+    main {
+        margin-top: 200px; /* Absolute maximum margin from header */
+    }
+    
+    /* Ensure header has proper height on smallest screens */
+    header.code-header {
+        min-height: 120px;
+    }
+    
+    /* Ensure the CTA section takes appropriate space */
+    .why-section + .terminal-cta {
+        margin-top: 25rem; /* Specific adjustment for element before terminal-cta */
+    }
+}
+
+/* Extreme fix for terminal CTA in mobile view */
+.terminal-cta {
+    position: relative; 
+    background-color: #0d1117; 
+    padding: 12rem 0 6rem; /* Extremely large top padding by default */
+    overflow: visible; /* Changed to visible to ensure content isn't cut off */
+    margin-top: 6rem; /* Very large margin from previous section */
+    z-index: 1; /* Ensure proper stacking */
+}
+
+/* Adjust header to make sure it doesn't overlap */
+header.code-header {
+    position: fixed; /* Ensure header is fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100; /* High z-index */
+    background-color: var(--background); /* Ensure background is visible */
+}
+
+/* Adjust main content spacing */
+main {
+    margin-top: 120px; /* Large default margin from fixed header */
+    position: relative;
+    z-index: 1;
+}
+
+/* Special positioning for the terminal window */
+.terminal-cta .terminal-window {
+    position: relative;
+    top: 0; /* Reset any top positioning */
+}
+
+@media screen and (max-width: 992px) {
+    /* Extreme fix for terminal CTA in mobile view */
+    .terminal-cta {
+        padding-top: 25rem; /* Extremely large top padding */
+        margin-top: 10rem; /* Large margin from previous section */
+        position: relative;
+        top: 100px; /* Additional top position adjustment */
+    }
+    
+    .terminal-cta .container {
+        padding-top: 5rem; /* Large padding for container */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin-top: 5rem; /* Large margin for terminal window */
+    }
+    
+    /* Increase space from header */
+    main {
+        margin-top: 150px; /* Very large margin from header */
+    }
+    
+    header.code-header {
+        min-height: 100px; /* Ensure header has proper height */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Extreme fix for terminal CTA in mobile view */
+    .terminal-cta {
+        padding-top: 30rem; /* Enormous top padding */
+        margin-top: 15rem; /* Huge margin from previous section */
+        top: 150px; /* Even more top position adjustment */
+    }
+    
+    .terminal-cta .container {
+        padding-top: 8rem; /* Very large container padding */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin-top: 8rem; /* Very large terminal window margin */
+    }
+    
+    /* Maximize spacing from fixed header */
+    main {
+        margin-top: 180px; /* Maximum margin from header */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Extreme fixes for smallest screens */
+    .terminal-cta {
+        padding-top: 35rem; /* Maximum top padding */
+        margin-top: 20rem; /* Maximum margin */
+        top: 200px; /* Maximum top position adjustment */
+    }
+    
+    .terminal-cta .container {
+        padding-top: 10rem; /* Maximum container padding */
+    }
+    
+    .terminal-cta .terminal-window {
+        margin-top: 10rem; /* Maximum terminal window margin */
+    }
+    
+    /* Absolute maximum spacing from header */
+    main {
+        margin-top: 200px; /* Absolute maximum margin from header */
+    }
+    
+    /* Ensure header has proper height on smallest screens */
+    header.code-header {
+        min-height: 120px;
+    }
+    
+    /* Ensure the CTA section takes appropriate space */
+    .why-section + .terminal-cta {
+        margin-top: 25rem; /* Specific adjustment for element before terminal-cta */
+    }
+}
+
+/* Extreme mobile spacing fix */
+#terminal-cta-section {
+    position: relative !important;
+    margin-top: 300px !important;
+    padding-top: 300px !important;
+    overflow: visible !important;
+    z-index: 1 !important;
+}
+
+/* Show mobile spacer only on mobile */
+.mobile-only-spacer {
+    display: none;
+}
+
+/* Header styling to ensure it doesn't overlap */
+header.code-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important; 
+    right: 0 !important;
+    z-index: 9999 !important;
+    background-color: var(--background) !important;
+}
+
+@media screen and (max-width: 992px) {
+    #terminal-cta-section {
+        margin-top: 400px !important;
+        padding-top: 400px !important;
+    }
+    
+    .mobile-only-spacer {
+        display: block;
+        height: 250px !important;
+    }
+    
+    main {
+        margin-top: 150px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #terminal-cta-section {
+        margin-top: 500px !important;
+        padding-top: 500px !important;
+    }
+    
+    .mobile-only-spacer {
+        height: 300px !important;
+    }
+    
+    main {
+        margin-top: 200px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #terminal-cta-section {
+        margin-top: 600px !important;
+        padding-top: 600px !important;
+    }
+    
+    .mobile-only-spacer {
+        height: 350px !important;
+    }
+    
+    main {
+        margin-top: 250px !important;
+    }
+}
+
+/* Base Terminal CTA Styles */
+.terminal-cta {
+    position: relative; 
+    background-color: #0d1117; 
+    padding: 4rem 0; 
+    overflow: hidden;
+    margin-top: 3rem; /* Default margin */
+}
+
+/* Force relative positioning for header on mobile screens */
+@media screen and (max-width: 768px) {
+    header, header.code-header {
+        position: relative !important; 
+        top: auto !important;
+        z-index: auto !important;
+    }
+    main {
+        margin-top: 0 !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+     header, header.code-header {
+        position: relative !important; 
+        top: auto !important;
+        z-index: auto !important;
+    }
+    main {
+        margin-top: 0 !important;
+    }
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    /* Existing styles */
+    /* ... existing code ... */
+    
+    /* Enhanced mobile-hide class to ensure all child elements are hidden */
+    .code-block.mobile-hide,
+    .code-block.mobile-hide .code-header,
+    .code-block.mobile-hide pre,
+    .code-block.mobile-hide code {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        pointer-events: none !important;
+        opacity: 0 !important;
+    }
+    
+    /* Ensure any standalone code-header with language-models.js is hidden */
+    .code-header:has([data-filename="language-models.js"]),
+    .code-header [data-filename="language-models.js"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    /* ... existing code ... */
+}
+
+@media screen and (max-width: 480px) {
+    /* ... existing code ... */
+    
+    /* Reinforce hiding for smaller mobile screens */
+    .code-block.mobile-hide,
+    .code-block.mobile-hide * {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    /* ... existing code ... */
+}
+
+/* Mobile hide classes - Specifically target language-models.js */
+@media screen and (max-width: 768px) {
+    /* Hide code blocks marked with mobile-hide class */
+    .code-block.mobile-hide {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        opacity: 0 !important;
+    }
+
+    /* Ensure all child elements of mobile-hide blocks are also hidden */
+    .code-block.mobile-hide * {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Specifically target the language-models.js file by text content */
+    .code-header span.file-name:contains("language-models.js"),
+    .code-header span[class="file-name"]:contains("language-models.js"),
+    .code-block:has(.code-header span.file-name:contains("language-models.js")) {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+/* Specific treatment for code blocks on mobile */
+@media screen and (max-width: 480px) {
+    /* Force hide any code blocks with language-models.js */
+    .code-block:has(.file-name:contains("language-models.js")) {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        position: absolute !important;
+    }
+}
+
+/* Mobile hide classes - Specifically for security */
+@media screen and (max-width: 768px) {
+    /* Hide blocks marked with mobile-hide class */
+    .code-block.mobile-hide,
+    .code-block.hidden-sensitive-code {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        pointer-events: none !important;
+        opacity: 0 !important;
+    }
+    
+    /* Hide children too */
+    .code-block.mobile-hide *,
+    .code-block.hidden-sensitive-code * {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Stronger hiding */
+    .code-block.mobile-hide,
+    .code-block.hidden-sensitive-code {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        position: absolute !important;
+    }
+}

@@ -1,0 +1,585 @@
+{% extends "base.html" %}
+
+{% block head %}
+<!-- Additional page-specific head elements -->
+<script>
+    // Code for syntax highlighting with proper escaping
+    document.addEventListener('DOMContentLoaded', () => {
+        // Highlight.js configuration with escaping enabled
+        document.querySelectorAll('pre code').forEach((block) => {
+            // Use highlightElement which has better handling of escaping
+            hljs.highlightElement(block);
+        });
+        
+        // Verify particles.js is loaded
+        if (typeof particlesJS === 'function') {
+            console.log('✅ particles.js is loaded correctly');
+        } else {
+            console.error('❌ particles.js is NOT loaded');
+        }
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-code">
+    <div id="particles-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: visible;"></div>
+    <div class="container">
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="terminal-button close"></span>
+                    <span class="terminal-button minimize"></span>
+                    <span class="terminal-button maximize"></span>
+                </div>
+                <div class="terminal-title">wakily@ai:~/projects</div>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-content">
+                    <div class="terminal-line">
+                        <span class="console-prompt">wakily@ai:~$</span> 
+                        <span class="typing-effect" id="typing-intro">cd arabic-ai && npm run dev</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="console-prompt">wakily@ai:~/arabic-ai$</span> 
+                        <span class="typing-effect" id="typing-main">python launch_arabic_ai.py --mode="advanced" --capabilities="full"</span>
+                    </div>
+                    <div class="terminal-output">
+                        <div class="loading-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <p class="output-line"><span class="code-keyword">Initializing</span> <span class="code-string">Arabic AI Models...</span></p>
+                        <p class="output-line"><span class="code-keyword">Loading</span> <span class="code-string">Language Understanding...</span> <span class="code-success">Success</span></p>
+                        <p class="output-line"><span class="code-keyword">Calibrating</span> <span class="code-string">Dialect Recognition...</span> <span class="code-success">Success</span></p>
+                        <p class="output-line"><span class="code-keyword">Launching</span> <span class="code-string">AI Agents...</span> <span class="code-success">Success</span></p>
+                        <p class="output-line success"><span class="code-success">✓</span> <span class="code-variable">Wakily AI Platform</span> <span class="code-success">Ready</span></p>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="console-prompt">wakily@ai:~/arabic-ai$</span> 
+                        <span class="blinking-cursor">|</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="glitch-text" data-text="الذكاء الاصطناعي العربي المتطور">الذكاء الاصطناعي العربي المتطور</h1>
+            <p class="hero-subtitle">نبرمج المستقبل بلغتك - الفهم العميق للهجات العربية بدقة تصل إلى <span class="highlight-rate">92%</span></p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('contact.contact') }}" class="btn btn-primary">$ ./start_project.sh</a>
+                <a href="{{ url_for('services.services_overview') }}" class="btn btn-secondary"># explore_services</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Code Feature Section -->
+<section class="code-feature-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>// <span class="function-text">حلولنا</span><span class="cursor">_</span></h2>
+            <p>نقدم حلول ذكية مدعومة بخبرة برمجية متقدمة</p>
+        </div>
+        
+        <div class="code-grid">
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="file-name">ai-agents.py</span>
+                    <div class="code-icons">
+                        <i class="fas fa-code"></i>
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+                <pre><code class="python">
+class ArabicAIAgent:
+    def __init__(self, dialect=&quot;standard&quot;):
+        self.dialect = dialect
+        self.accuracy = 0.92
+        self.capabilities = [&quot;nlp&quot;, &quot;sentiment&quot;, 
+                         &quot;entity_recognition&quot;]
+        
+    def understand(self, text):
+        # Advanced Arabic NLP processing
+        return { 
+            &quot;intent&quot;: self._identify_intent(text),
+            &quot;entities&quot;: self._extract_entities(text),
+            &quot;sentiment&quot;: self._analyze_sentiment(text)
+        }
+        
+    def respond(self, query, context=None):
+        &quot;&quot;&quot;Generate contextually aware responses
+        in the user's own dialect&quot;&quot;&quot;
+        # Implementation details...
+                </code></pre>
+                <div class="card-overlay">
+                    <h3>تطوير وكلاء الذكاء الاصطناعي</h3>
+                    <p>وكلاء ذكاء اصطناعي مخصصة تتفهم احتياجات عملك وتتحدث بلغتك ولهجتك.</p>
+                    <a href="{{ url_for('services.ai_agents') }}" class="code-link">function explore() { ... }</a>
+                </div>
+            </div>
+            
+            <div class="code-block mobile-hide">
+                <div class="code-header">
+                    <span class="file-name">language-models.js</span>
+                    <div class="code-icons">
+                        <i class="fas fa-code"></i>
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+                <pre><code class="javascript">
+// Arabic LLM Tuning Module
+const arabicLLM = {
+  baseModel: &quot;transformer-xl-arabic&quot;,
+  accuracy: 0.92,
+  dialects: [
+    &quot;standard&quot;, &quot;gulf&quot;, &quot;egyptian&quot;, 
+    &quot;levantine&quot;, &quot;maghrebi&quot;
+  ],
+  
+  async fineTune(params) {
+    const { dataset, dialect, epochs } = params;
+    
+    console.log(`Starting fine-tuning for ${dialect}`);
+    await this.preprocessData(dataset);
+    const results = await this.trainModel({
+      epochs: epochs || 5,
+      batchSize: 16,
+      learningRate: 5e-5
+    });
+    
+    return this.evaluateModel(results);
+  }
+};
+                </code></pre>
+                <div class="card-overlay">
+                    <h3>تحسين نماذج اللغة الكبيرة</h3>
+                    <p>ضبط وتخصيص نماذج اللغة للغة العربية بدقة 92% ودعم متعدد اللهجات.</p>
+                    <a href="{{ url_for('services.llm_tuning') }}" class="code-link">import learnMore from './details';</a>
+                </div>
+            </div>
+            
+            <div class="code-block mobile-hide">
+                <div class="code-header">
+                    <span class="file-name">custom-solutions.tsx</span>
+                    <div class="code-icons">
+                        <i class="fas fa-code"></i>
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+                <pre><code class="typescript">
+interface SolutionProps {
+  industry: string;
+  complexity: &quot;basic&quot; | &quot;advanced&quot; | &quot;enterprise&quot;;
+  features: string[];
+  timeline: number; // in days
+}
+
+export const RapidDevelopment: React.FC&lt;SolutionProps&gt; = 
+  ({ industry, complexity, features, timeline }) =&gt; {
+  
+  const [loading, setLoading] = useState&lt;boolean&gt;(false);
+  const [estimate, setEstimate] = useState&lt;any&gt;(null);
+  
+  // Calculate project specifics based on requirements
+  useEffect(() =&gt; {
+    const projectPlan = generateProjectPlan(
+      industry, complexity, features, timeline
+    );
+    setEstimate(projectPlan);
+  }, [industry, complexity, features, timeline]);
+  
+  return (
+    &lt;div className=&quot;solution-container&quot;&gt;
+      {/* Solution output rendered here */}
+    &lt;/div&gt;
+  );
+};
+                </code></pre>
+                <div class="card-overlay">
+                    <h3>تطوير البرمجيات السريع</h3>
+                    <p>تطوير تطبيقات مدعومة بالذكاء الاصطناعي وخدمات تكامل بتقنيات حديثة.</p>
+                    <a href="{{ url_for('services.software_development') }}" class="code-link">git checkout development</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number"><span class="counter" data-target="92">0</span>%</div>
+                <div class="stat-label">دقة الفهم اللغوي</div>
+                <div class="stat-bar"><div class="stat-progress p92"></div></div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number"><span class="counter" data-target="50">0</span>+</div>
+                <div class="stat-label">مشروع منجز</div>
+                <div class="stat-bar"><div class="stat-progress p50"></div></div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number"><span class="counter" data-target="5">0</span></div>
+                <div class="stat-label">لهجات عربية مدعومة</div>
+                <div class="stat-bar"><div class="stat-progress p100"></div></div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number"><span class="counter" data-target="24">0</span>/7</div>
+                <div class="stat-label">دعم فني متواصل</div>
+                <div class="stat-bar"><div class="stat-progress p100"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Wakily Section -->
+<section class="why-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>// <span class="function-text">why</span>.<span class="code-keyword">choose</span>(wakily)<span class="cursor">_</span></h2>
+            <p>ما يميزنا عن الآخرين</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3><span class="code-comment"># </span>ريادة الذكاء الاصطناعي العربي</h3>
+                <div class="code-snippet">
+                    <code>accuracy = 0.92 # 92% understanding</code>
+                </div>
+                <p>دقة تصل إلى 92% في فهم اللغة العربية بمختلف لهجاتها وسياقاتها.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3><span class="code-comment"># </span>التميز ثنائي اللغة</h3>
+                <div class="code-snippet">
+                    <code>languages = [&quot;arabic&quot;, &quot;english&quot;]</code>
+                </div>
+                <p>أداء قوي بنفس المستوى باللغة الإنجليزية والعربية.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h3><span class="code-comment"># </span>الأداء العالي</h3>
+                <div class="code-snippet">
+                    <code>performance_boost = 50 # percent</code>
+                </div>
+                <p>قيمة ودقة أعلى بنسبة 50% مقارنة بالحلول العامة.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3><span class="code-comment"># </span>الامتثال والأمان</h3>
+                <div class="code-snippet">
+                    <code>security_level = &quot;enterprise&quot;</code>
+                </div>
+                <p>التزام صارم باللوائح الوطنية للبيانات وأفضل ممارسات الأمان.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Terminal Call to Action -->
+<section class="terminal-cta" id="terminal-cta-section" style="position: relative; margin-top: 3rem !important; padding-top: 3rem !important;">
+    <!-- Add particles container for terminal CTA section -->
+    <div id="terminal-particles-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: visible;"></div>
+    <div class="container" style="position: relative; z-index: 2; padding-top: 1rem !important;">
+        <!-- Extra spacers for mobile REMOVED -->
+        <!-- <div style="height: 200px;" class="mobile-only-spacer"></div> -->
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="terminal-button close"></span>
+                    <span class="terminal-button minimize"></span>
+                    <span class="terminal-button maximize"></span>
+                </div>
+                <div class="terminal-title">wakily@ai:~/projects/contact</div>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-content">
+                    <div class="terminal-line">
+                        <span class="console-prompt">wakily@ai:~$</span> 
+                        <span class="typing-effect" id="typing-cta">echo "هل أنت جاهز لبدء مشروعك؟"</span>
+                    </div>
+                    <div class="terminal-output-large">
+                        <p class="output-line">هل أنت جاهز لبدء مشروعك؟</p>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="console-prompt">wakily@ai:~$</span> 
+                        <span class="typing-effect" id="typing-cta2">./contact_us.sh</span>
+                    </div>
+                </div>
+                <div class="cta-button-container">
+                    <a href="{{ url_for('contact.contact') }}" class="btn btn-primary full-width">$ تواصل معنا اليوم</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Initialize Matrix Particles
+    document.addEventListener('DOMContentLoaded', function() {
+        // Debug containers exist
+        if (document.getElementById('particles-container')) {
+            console.log('✅ particles-container exists in DOM');
+        } else {
+            console.error('❌ particles-container NOT found in DOM');
+        }
+        
+        if (document.getElementById('terminal-particles-container')) {
+            console.log('✅ terminal-particles-container exists in DOM');
+        } else {
+            console.error('❌ terminal-particles-container NOT found in DOM');
+        }
+        
+        // Particles.js configuration for hero section
+        try {
+            particlesJS('particles-container', {
+                particles: {
+                    number: {
+                        value: 100, // Increase number of particles
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: ['#ff0000', '#ffff00', '#ffffff'] // More visible colors
+                    },
+                    shape: {
+                        type: 'char',
+                        character: {
+                            value: ['0', '1', 'ا', 'ب', 'ت', 'ث', '<', '>', '{', '}', '=', '+', '*', '&'],
+                            font: 'Fira Code',
+                            style: '',
+                            weight: '400',
+                        }
+                    },
+                    opacity: {
+                        value: 0.9, // Increased opacity
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0.3, // Higher min opacity
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 15, // Larger particles for better visibility
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 4,
+                            size_min: 5, // Larger min size
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: false
+                    },
+                    move: {
+                        enable: true,
+                        speed: 5, // Faster speed
+                        direction: 'none', // Random direction
+                        random: true,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'repulse'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            });
+            console.log("Hero particles initialized");
+            
+            // Check if canvas was created
+            setTimeout(() => {
+                const heroCanvas = document.querySelector('#particles-container canvas');
+                if (heroCanvas) {
+                    console.log('✅ Hero particles canvas created successfully');
+                    console.log('Canvas dimensions:', heroCanvas.width, 'x', heroCanvas.height);
+                    console.log('Canvas styles:', window.getComputedStyle(heroCanvas).cssText);
+                } else {
+                    console.error('❌ Hero particles canvas NOT created');
+                }
+            }, 500);
+            
+        } catch(e) {
+            console.error("Error initializing hero particles:", e);
+        }
+        
+        // Initialize particles for terminal section
+        try {
+            particlesJS('terminal-particles-container', {
+                particles: {
+                    number: {
+                        value: 100,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: ['#ff0000', '#ffff00', '#ffffff'] // More visible colors
+                    },
+                    shape: {
+                        type: 'char',
+                        character: {
+                            value: ['0', '1', 'ح', 'م', 'ى', 'ث', '<', '>', '{', '}', '=', '+', '*', '&'],
+                            font: 'Fira Code',
+                            style: '',
+                            weight: '400',
+                        }
+                    },
+                    opacity: {
+                        value: 0.9,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1.5,
+                            opacity_min: 0.3,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 20,
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 40,
+                            size_min: 12,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: false
+                    },
+                    move: {
+                        enable: true,
+                        speed: 5,
+                        direction: 'none',
+                        random: true,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: false
+                        },
+                        onclick: {
+                            enable: false
+                        },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            });
+            console.log("Terminal particles initialized");
+            
+            // Check if canvas was created
+            setTimeout(() => {
+                const terminalCanvas = document.querySelector('#terminal-particles-container canvas');
+                if (terminalCanvas) {
+                    console.log('✅ Terminal particles canvas created successfully');
+                    console.log('Canvas dimensions:', terminalCanvas.width, 'x', terminalCanvas.height);
+                } else {
+                    console.error('❌ Terminal particles canvas NOT created');
+                }
+            }, 500);
+            
+        } catch(e) {
+            console.error("Error initializing terminal particles:", e);
+        }
+        
+        // Typing effect initialization
+        const typingOptions = {
+            typeSpeed: 60,
+            startDelay: 300,
+            backSpeed: 0,
+            loop: false,
+            showCursor: false
+        };
+        
+        if (document.getElementById('typing-intro')) {
+            new Typed('#typing-intro', typingOptions);
+        }
+        
+        setTimeout(() => {
+            if (document.getElementById('typing-main')) {
+                new Typed('#typing-main', {...typingOptions, startDelay: 100});
+            }
+        }, 2000);
+        
+        setTimeout(() => {
+            if (document.getElementById('typing-cta')) {
+                new Typed('#typing-cta', {...typingOptions, startDelay: 100});
+            }
+        }, 500);
+        
+        setTimeout(() => {
+            if (document.getElementById('typing-cta2')) {
+                new Typed('#typing-cta2', {...typingOptions, startDelay: 100});
+            }
+        }, 3000);
+        
+        // Progress bar animation
+        const progressBar = document.querySelector('.progress');
+        if (progressBar) {
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+            }, 800);
+        }
+        
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        counters.forEach(counter => {
+            const animate = () => {
+                const value = +counter.getAttribute('data-target');
+                const data = +counter.innerText;
+                
+                const time = value / speed;
+                if (data < value) {
+                    counter.innerText = Math.ceil(data + time);
+                    setTimeout(animate, 30);
+                } else {
+                    counter.innerText = value;
+                }
+            }
+            animate();
+        });
+    });
+</script>
+{% endblock %} 

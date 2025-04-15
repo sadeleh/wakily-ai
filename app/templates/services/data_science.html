@@ -1,0 +1,609 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+    .hero-service {
+        background: linear-gradient(135deg, rgba(94, 53, 177, 0.1) 0%, rgba(33, 150, 243, 0.1) 100%);
+        padding: 6rem 0 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .section-divider {
+        height: 150px;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .divider-wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%235e35b1' fill-opacity='0.05' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,181.3C672,160,768,96,864,96C960,96,1056,160,1152,170.7C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .overview-section {
+        padding: 5rem 0;
+    }
+    
+    .overview-container {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+    
+    .overview-image {
+        flex: 1;
+    }
+    
+    .overview-image img {
+        max-width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+    }
+    
+    .overview-content {
+        flex: 1;
+    }
+    
+    .services-section {
+        padding: 5rem 0;
+        background-color: var(--light-bg);
+    }
+    
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .service-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .service-header {
+        padding: 1.5rem;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        color: var(--white);
+        text-align: center;
+    }
+    
+    .service-header h3 {
+        color: var(--white);
+        margin-bottom: 0.5rem;
+    }
+    
+    .service-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .service-body {
+        padding: 1.5rem;
+        flex-grow: 1;
+    }
+    
+    .service-footer {
+        padding: 1.5rem;
+        text-align: center;
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .tech-section {
+        padding: 5rem 0;
+    }
+    
+    .tech-container {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+    }
+    
+    .tech-content {
+        flex: 1;
+    }
+    
+    .tech-logos {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    
+    .tech-logo {
+        background-color: var(--white);
+        height: 120px;
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+    }
+    
+    .tech-logo:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(94, 53, 177, 0.15);
+    }
+    
+    .tech-logo i {
+        font-size: 3rem;
+        color: var(--primary);
+    }
+    
+    .benefits-section {
+        padding: 5rem 0;
+        background-color: var(--light-bg);
+    }
+    
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .benefit-item {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        text-align: center;
+    }
+    
+    .benefit-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .benefit-icon {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+    }
+    
+    .case-studies {
+        padding: 5rem 0;
+    }
+    
+    .case-study {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+    }
+    
+    .case-study:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
+    }
+    
+    .case-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .case-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 1rem;
+        flex-shrink: 0;
+    }
+    
+    .case-icon i {
+        font-size: 1.5rem;
+        color: var(--white);
+    }
+    
+    .case-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .stat-item {
+        text-align: center;
+        flex: 1;
+        min-width: 150px;
+    }
+    
+    .stat-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--primary);
+    }
+    
+    @media screen and (max-width: 992px) {
+        .overview-container,
+        .tech-container {
+            flex-direction: column;
+        }
+        
+        .tech-logos {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media screen and (max-width: 576px) {
+        .tech-logos {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-service">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>تحليل البيانات المتقدم</h2>
+            <p>رؤى قيمة من بياناتك باللغة العربية</p>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider">
+    <div class="divider-wave"></div>
+</div>
+
+<!-- Overview Section -->
+<section class="overview-section">
+    <div class="container">
+        <div class="overview-container">
+            <div class="overview-content animate__animated">
+                <h2>تحويل البيانات إلى قيمة حقيقية</h2>
+                <p>في وكيلي، نجمع بين خبرتنا في الذكاء الاصطناعي وفهمنا العميق للغة العربية لتقديم خدمات تحليل بيانات متقدمة تستخرج قيمة حقيقية من بياناتك. نساعدك على فهم عملائك، وتحسين عملياتك، واتخاذ قرارات أفضل بناءً على رؤى مستندة إلى البيانات.</p>
+                <p>ما يميزنا هو قدرتنا على تحليل البيانات العربية بدقة عالية، سواء كانت مهيكلة أو غير مهيكلة، مما يوفر فهمًا أعمق للسوق العربي واحتياجاته الفريدة.</p>
+                <a href="{{ url_for('contact.contact') }}" class="btn">تعرف على كيفية مساعدتك</a>
+            </div>
+            <div class="overview-image animate__animated">
+                <img src="{{ url_for('static', filename='images/data-science.svg') }}" alt="تحليل البيانات المتقدم">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>خدماتنا في تحليل البيانات</h2>
+            <p>حلول متكاملة لتلبية احتياجاتك التحليلية</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card animate__animated">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>تحليل بيانات الأعمال</h3>
+                </div>
+                <div class="service-body">
+                    <p>نحول بيانات عملك إلى رؤى قابلة للتنفيذ تساعدك على اتخاذ قرارات أفضل وتحسين الأداء التشغيلي.</p>
+                    <ul>
+                        <li>تحليل الأداء المالي والتشغيلي</li>
+                        <li>تحليل سلوك المستخدم وتجربة العملاء</li>
+                        <li>تحسين العمليات وتقليل التكاليف</li>
+                        <li>لوحات معلومات تفاعلية وتقارير متقدمة</li>
+                    </ul>
+                </div>
+                <div class="service-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+            
+            <div class="service-card animate__animated">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>تحليل المشاعر باللغة العربية</h3>
+                </div>
+                <div class="service-body">
+                    <p>تحليل متقدم للمشاعر والآراء في النصوص العربية، يساعدك على فهم آراء عملائك ومشاعرهم تجاه منتجاتك وخدماتك.</p>
+                    <ul>
+                        <li>تحليل مشاعر المستخدمين على وسائل التواصل الاجتماعي</li>
+                        <li>تحليل تعليقات وآراء العملاء</li>
+                        <li>مراقبة سمعة العلامة التجارية</li>
+                        <li>تحديد نقاط القوة والضعف في المنتج</li>
+                    </ul>
+                </div>
+                <div class="service-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+            
+            <div class="service-card animate__animated">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>تحليل وتجزئة العملاء</h3>
+                </div>
+                <div class="service-body">
+                    <p>فهم عميق لعملائك من خلال تحليل البيانات وتقسيمهم إلى شرائح ذات احتياجات وسلوكيات متشابهة.</p>
+                    <ul>
+                        <li>تجزئة العملاء بناءً على السلوك والتفضيلات</li>
+                        <li>تحليل رحلة العميل وتحسينها</li>
+                        <li>التنبؤ بسلوك العملاء واحتياجاتهم</li>
+                        <li>استراتيجيات استهداف مخصصة</li>
+                    </ul>
+                </div>
+                <div class="service-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+            
+            <div class="service-card animate__animated">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>تحليل البيانات التسويقية</h3>
+                </div>
+                <div class="service-body">
+                    <p>تحليل أداء حملاتك التسويقية وقنواتك المختلفة لتحسين العائد على الاستثمار التسويقي.</p>
+                    <ul>
+                        <li>تحليل أداء الحملات عبر القنوات المختلفة</li>
+                        <li>قياس تأثير الإعلانات وتحسينها</li>
+                        <li>تحليل التحويل وتحسين معدلات التحويل</li>
+                        <li>تخصيص المحتوى والعروض</li>
+                    </ul>
+                </div>
+                <div class="service-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+            
+            <div class="service-card animate__animated">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>تحليل المستندات والنصوص</h3>
+                </div>
+                <div class="service-body">
+                    <p>استخراج المعلومات والرؤى القيمة من المستندات والنصوص العربية باستخدام تقنيات معالجة اللغة الطبيعية.</p>
+                    <ul>
+                        <li>استخراج المعلومات من المستندات</li>
+                        <li>تصنيف وفهرسة الوثائق تلقائيًا</li>
+                        <li>تلخيص النصوص الطويلة</li>
+                        <li>تحديد الكلمات المفتاحية والمواضيع</li>
+                    </ul>
+                </div>
+                <div class="service-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+            
+            <div class="service-card animate__animated">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>التعلم الآلي والتنبؤات</h3>
+                </div>
+                <div class="service-body">
+                    <p>بناء نماذج تعلم آلي متقدمة للتنبؤ بالاتجاهات المستقبلية واتخاذ قرارات استباقية.</p>
+                    <ul>
+                        <li>التنبؤ بالمبيعات والطلب</li>
+                        <li>تحديد العملاء المعرضين للتسرب</li>
+                        <li>اكتشاف الاحتيال والأنشطة غير العادية</li>
+                        <li>توصيات المنتجات والمحتوى</li>
+                    </ul>
+                </div>
+                <div class="service-footer">
+                    <a href="{{ url_for('contact.contact') }}" class="btn">اكتشف المزيد</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technology Section -->
+<section class="tech-section">
+    <div class="container">
+        <div class="tech-container">
+            <div class="tech-content animate__animated">
+                <h2>التقنيات المستخدمة</h2>
+                <p>نستخدم أحدث التقنيات وأفضل الممارسات في مجال تحليل البيانات والذكاء الاصطناعي، مع التركيز على تخصيص هذه التقنيات للغة العربية وخصوصياتها.</p>
+                <p>نتميز بتطوير خوارزميات مخصصة للتعامل مع البيانات العربية، سواء كانت نصوصًا أو بيانات هيكلية، مما يضمن دقة عالية في التحليل والنتائج.</p>
+            </div>
+            <div class="tech-logos animate__animated">
+                <div class="tech-logo">
+                    <i class="fab fa-python"></i>
+                </div>
+                <div class="tech-logo">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="tech-logo">
+                    <i class="fab fa-aws"></i>
+                </div>
+                <div class="tech-logo">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="tech-logo">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="tech-logo">
+                    <i class="fas fa-brain"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="benefits-section">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>فوائد تحليل البيانات المتقدم</h2>
+            <p>كيف يمكن أن تستفيد مؤسستك من حلولنا</p>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-item animate__animated">
+                <div class="benefit-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>قرارات أفضل</h3>
+                <p>اتخاذ قرارات مستندة إلى البيانات بدلاً من التخمين والحدس.</p>
+            </div>
+            
+            <div class="benefit-item animate__animated">
+                <div class="benefit-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>تحسين الأداء</h3>
+                <p>زيادة الكفاءة التشغيلية وتحسين الأداء المالي.</p>
+            </div>
+            
+            <div class="benefit-item animate__animated">
+                <div class="benefit-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>فهم العملاء</h3>
+                <p>فهم أعمق لاحتياجات وسلوكيات العملاء في السوق العربي.</p>
+            </div>
+            
+            <div class="benefit-item animate__animated">
+                <div class="benefit-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>اكتشاف الفرص</h3>
+                <p>تحديد فرص جديدة للنمو وتطوير المنتجات والخدمات.</p>
+            </div>
+            
+            <div class="benefit-item animate__animated">
+                <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>تقليل المخاطر</h3>
+                <p>التنبؤ بالمخاطر المحتملة واتخاذ إجراءات استباقية للتخفيف منها.</p>
+            </div>
+            
+            <div class="benefit-item animate__animated">
+                <div class="benefit-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>ميزة تنافسية</h3>
+                <p>الحصول على ميزة تنافسية من خلال استغلال البيانات بشكل أفضل من المنافسين.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Case Studies -->
+<section class="case-studies">
+    <div class="container">
+        <div class="section-header animate__animated">
+            <h2>قصص نجاح</h2>
+            <p>أمثلة على كيفية مساعدتنا للشركات في تحقيق نتائج ملموسة</p>
+        </div>
+        
+        <div class="case-study animate__animated">
+            <div class="case-title">
+                <div class="case-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div>
+                    <h3>تجزئة العملاء لشركة تجزئة كبرى</h3>
+                    <p>تحليل بيانات العملاء وتقسيمهم إلى شرائح لتحسين استراتيجيات التسويق والمبيعات</p>
+                </div>
+            </div>
+            <p>قمنا بتحليل بيانات عملاء شركة تجزئة كبرى في المنطقة، باستخدام تقنيات التعلم الآلي المتقدمة، وتمكنا من تقسيم العملاء إلى شرائح متميزة بناءً على سلوكهم الشرائي وتفضيلاتهم. ساعد ذلك الشركة على تخصيص عروضها وحملاتها التسويقية لكل شريحة، مما أدى إلى تحسين كبير في معدلات التحويل والولاء.</p>
+            
+            <div class="case-stats">
+                <div class="stat-item">
+                    <div class="stat-value">32%</div>
+                    <div class="stat-label">زيادة في معدل الاستجابة للحملات</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value">28%</div>
+                    <div class="stat-label">زيادة في متوسط قيمة الطلب</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value">45%</div>
+                    <div class="stat-label">تحسن في معدل الاحتفاظ بالعملاء</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="case-study animate__animated">
+            <div class="case-title">
+                <div class="case-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <div>
+                    <h3>تحليل مشاعر العملاء لشركة اتصالات</h3>
+                    <p>تحليل متقدم لآراء العملاء على منصات التواصل الاجتماعي ومراكز الاتصال</p>
+                </div>
+            </div>
+            <p>طورنا نظامًا متقدمًا لتحليل مشاعر العملاء باللغة العربية لإحدى شركات الاتصالات الرائدة. قام النظام بتحليل التعليقات والمراجعات على وسائل التواصل الاجتماعي، وتسجيلات مكالمات مركز الاتصال، ورسائل البريد الإلكتروني، لتحديد المشكلات المتكررة ومجالات التحسين. ساعد ذلك الشركة على تحسين خدمة العملاء ومعالجة المشكلات بشكل استباقي.</p>
+            
+            <div class="case-stats">
+                <div class="stat-item">
+                    <div class="stat-value">92%</div>
+                    <div class="stat-label">دقة في تحليل المشاعر باللغة العربية</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value">35%</div>
+                    <div class="stat-label">انخفاض في معدل شكاوى العملاء</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value">18%</div>
+                    <div class="stat-label">زيادة في درجة رضا العملاء</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta">
+    <div class="container">
+        <h2 class="animate__animated">هل أنت جاهز لاستخراج قيمة حقيقية من بياناتك؟</h2>
+        <p class="animate__animated">تواصل معنا اليوم لمناقشة كيف يمكننا مساعدتك في تحويل بياناتك إلى رؤى قيمة تدفع نمو أعمالك.</p>
+        <a href="{{ url_for('contact.contact') }}" class="btn animate__animated">تواصل معنا</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<!-- Removed custom FontAwesome script since it's now in base.html -->
+{% endblock %} 

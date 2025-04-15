@@ -149,22 +149,43 @@ header.scrolled {
     justify-content: space-between;
     align-items: center;
     gap: 1.5rem;
+    position: relative; /* Add position relative for absolute positioning of nav-links */
 }
 
 .logo {
-    width: 160px; /* Slightly larger logo */
-    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    order: 1; /* Push logo to the right (for RTL layout) */
 }
-.logo:hover {
-    transform: scale(1.05);
+
+.logo-text {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.code-tag {
+    color: var(--tag);
+}
+
+.function-text {
+    color: var(--function);
 }
 
 .nav-links {
     display: flex;
     gap: 2.5rem;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center; /* Center the menu items */
     margin: 0;
+    position: absolute; /* Position absolutely to center */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content; /* Set width to fit content */
+    order: 2; /* Place in middle */
 }
 
 .nav-links a {
@@ -195,6 +216,10 @@ header.scrolled {
 
 .nav-links a.active::after, .nav-links a:hover::after {
     width: 100%;
+}
+
+.language-switcher {
+    order: 3; /* Push language switcher to the left (for RTL layout) */
 }
 
 .language-switcher .lang-btn {
@@ -948,8 +973,23 @@ footer {
     .hero p { font-size: 1.15rem; }
     .hero { padding: 6rem 0 8rem; }
 
-    .main-nav .container { flex-direction: column; gap: 1.5rem; }
-    .nav-links { justify-content: center; margin-top: 1rem; gap: 2rem; }
+    .main-nav .container {
+        flex-direction: column; 
+        gap: 1.5rem;
+    }
+    
+    .nav-links {
+        position: relative; /* Reset position for mobile */
+        justify-content: center;
+        margin-top: 1rem;
+        gap: 2rem;
+        width: 100%;
+    }
+    
+    .logo, .language-switcher {
+        width: 100%;
+        justify-content: center;
+    }
 
     .about-container { grid-template-columns: 1fr; gap: 3rem; }
     .about-image { order: -1; max-width: 500px; margin: 0 auto; } /* Move image to top */
@@ -1459,11 +1499,13 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     gap: 1.5rem;
+    position: relative; /* Add position relative for absolute positioning of nav-links */
 }
 
 .logo {
     display: flex;
     align-items: center;
+    order: 1; /* Push logo to the right (for RTL layout) */
 }
 
 .logo-text {
@@ -1486,8 +1528,14 @@ a:hover {
     display: flex;
     gap: 2.5rem;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center; /* Center the menu items */
     margin: 0;
+    position: absolute; /* Position absolutely to center */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content; /* Set width to fit content */
+    order: 2; /* Place in middle */
 }
 
 .nav-links a {
@@ -1500,8 +1548,7 @@ a:hover {
     white-space: nowrap;
 }
 
-.nav-links a:hover, 
-.nav-links a.active {
+.nav-links a.active, .nav-links a:hover {
     color: var(--primary);
 }
 
@@ -1511,16 +1558,34 @@ a:hover {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px;
-    background: var(--primary);
-    transition: width 0.3s ease;
+    height: 3px; /* Thicker underline */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    transition: width 0.4s ease; /* Smoother transition */
+    border-radius: 2px;
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
+.nav-links a.active::after, .nav-links a:hover::after {
     width: 100%;
-    right: auto;
-    left: 0;
+}
+
+.language-switcher {
+    order: 3; /* Push language switcher to the left (for RTL layout) */
+}
+
+.language-switcher .lang-btn {
+    background: transparent;
+    border: 1px solid var(--primary-light);
+    color: var(--primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.language-switcher .lang-btn:hover {
+    background-color: var(--primary-light);
+    color: var(--white);
+    border-color: var(--primary-light);
 }
 
 .terminal-btn {
